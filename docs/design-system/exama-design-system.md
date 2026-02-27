@@ -1,6 +1,6 @@
 # Exama Design System
 
-**Version 1.0** · Online Examination Platform · Light Mode Only
+**Version 1.1** · Online Examination Platform · Light Mode Only
 
 ---
 
@@ -188,10 +188,10 @@ The type system uses two typefaces: one serif for authority and hierarchy, one s
 
 | Face | Family | Role |
 |---|---|---|
-| **Display & Headings** | Libre Baskerville | Serif — academic, authoritative, traditional |
+| **Display & Headings** | Noto Serif | Serif — academic, authoritative, traditional |
 | **Body & UI** | DM Sans | Sans-serif — geometric, neutral, functional |
 
-**Libre Baskerville** was chosen over modern serifs (Playfair, Georgia) because it maintains legibility at smaller heading sizes while still projecting academic credibility. Its optical sizing and ink-trap-influenced letterforms render cleanly on screen.
+**Noto Serif** was chosen over modern serifs (Playfair, Georgia) because it maintains legibility at smaller heading sizes while still projecting academic credibility. Its optical sizing and ink-trap-influenced letterforms render cleanly on screen.
 
 **DM Sans** was chosen for its generous x-height, open counters, and near-invisible personality — ideal for long-form reading during exams and for UI labels that should fade into the background.
 
@@ -199,10 +199,10 @@ The type system uses two typefaces: one serif for authority and hierarchy, one s
 
 | Name | Font | Size | Weight | Line Height | Usage |
 |---|---|---|---|---|---|
-| Display | Libre Baskerville | 48px / 3rem | 700 | 1.15 | Hero titles, landing |
-| H1 | Libre Baskerville | 30px / 1.875rem | 700 | 1.25 | Page titles |
-| H2 | Libre Baskerville | 24px / 1.5rem | 700 | 1.3 | Section headings |
-| H3 | Libre Baskerville | 20px / 1.25rem | 700 | 1.4 | Card/panel headings |
+| Display | Noto Serif | 48px / 3rem | 700 | 1.15 | Hero titles, landing |
+| H1 | Noto Serif | 30px / 1.875rem | 700 | 1.25 | Page titles |
+| H2 | Noto Serif | 24px / 1.5rem | 700 | 1.3 | Section headings |
+| H3 | Noto Serif | 20px / 1.25rem | 700 | 1.4 | Card/panel headings |
 | H4 | DM Sans | 16px / 1rem | 600 | 1.4 | Subheadings, group labels |
 | Body Large | DM Sans | 16px / 1rem | 400 | 1.6 | Primary body content |
 | Body | DM Sans | 14px / 0.875rem | 400 | 1.6 | Default body, descriptions |
@@ -216,7 +216,7 @@ Labels (table headers, section identifiers, metadata) use **DM Sans 11px, font-w
 
 #### Question Text
 
-Exam question body text uses **Libre Baskerville at 18px, ink-700, line-height 1.7**. The serif face signals "this is content to be read carefully." The generous line height reduces eye-tracking errors on dense mathematical or scientific questions.
+Exam question body text uses **Noto Serif at 18px, ink-700, line-height 1.7**. The serif face signals "this is content to be read carefully." The generous line height reduces eye-tracking errors on dense mathematical or scientific questions.
 
 ---
 
@@ -450,7 +450,7 @@ box-shadow: shadow-paper
 
 **Hoverable Card** (`card-hover`) — Used when the card is clickable (e.g., exam list items). On hover: `border-color: accent-300`, `box-shadow: shadow-paper-md`. No transform or scale effect.
 
-**Stat Card** — Displays a single KPI metric. Structure: label (Label style, `ink-300`) → large number (Libre Baskerville, 36px, `ink-700`) → supporting text (12px, `ink-300`). May include a small progress bar below.
+**Stat Card** — Displays a single KPI metric. Structure: label (Label style, `ink-300`) → large number (Noto Serif, 36px, `ink-700`) → supporting text (12px, `ink-300`). May include a small progress bar below.
 
 **Accent Border Card** — A left `3px solid accent-500` border is added for informational or highlighted content (e.g., a "Note" card). This replaces the default 1px border on the left side.
 
@@ -562,7 +562,7 @@ padding: 24px
 **Modal anatomy:**
 ```
 [Header row]
-  ├── Title (H3, Libre Baskerville)
+  ├── Title (H3, Noto Serif)
   └── Close button (top-right, Ghost icon button)
 [Divider] (optional)
 [Body] — description, form, or content
@@ -682,7 +682,7 @@ Empty states are shown when a data container has no items to display — new acc
 ```
 [Icon container] — 48×48px, border-radius: 8px, paper-100 or semantic-50 background
     └── [Icon] — 24px, ink-300 or semantic tint
-[Heading] — Libre Baskerville, 18px, ink-600
+[Heading] — Noto Serif, 18px, ink-600
 [Description] — DM Sans 14px, ink-300, max-width 280px, centered
 [CTA Button] (optional) — Primary or Outline variant
 ```
@@ -736,7 +736,7 @@ Each page within the teacher dashboard has a consistent header row at the top of
 [Page Header]
   ├── [Left]
   │     ├── Breadcrumb (if depth > 1)
-  │     ├── Page title (H1, Libre Baskerville)
+  │     ├── Page title (H1, Noto Serif)
   │     └── Subtitle / context (14px, ink-400)
   └── [Right]
         └── Primary action button (e.g., "+ New Exam")
@@ -808,7 +808,7 @@ padding: 0 20px
 position: sticky, top: 0, z-index: 40
 ```
 
-**Left side:** Product logo (Libre Baskerville, `ink-700`) + separator (`ink-200`, 1px vertical) + exam name (DM Sans 14px, `ink-500`).  
+**Left side:** Product logo (Noto Serif, `ink-700`) + separator (`ink-200`, 1px vertical) + exam name (DM Sans 14px, `ink-500`).  
 **Right side:** Timer component + progress indicator ("18 / 25 answered").
 
 The topbar does not contain a Submit button or navigation links. It communicates identity, time, and progress only. The Submit action lives exclusively in the Question Map panel where it requires deliberate spatial navigation to reach.
@@ -886,7 +886,7 @@ One question is displayed at a time. The panel renders a single question block a
 - "Question X / Y" in Label style (`ink-300`, uppercase, `letter-spacing: 0.07em`)
 - Flag toggle button (Ghost, icon-only): Toggles flagged state for the current question. Icon: flag outline → flag filled (`warning-400`) when active.
 
-**Question body:** Libre Baskerville 18px, `ink-700`, `line-height: 1.7`. Maximum content width: `680px`.
+**Question body:** Noto Serif 18px, `ink-700`, `line-height: 1.7`. Maximum content width: `680px`.
 
 **Answer options area:** Directly below the question body, `margin-top: 24px`.
 
@@ -1020,7 +1020,7 @@ Shown after an exam is submitted or after the timer expires. It is a focused, ce
 - 5.0–7.9 → Warning (amber)
 - < 5.0 → Danger (red)
 
-**Stat row:** Three equal-width cells — Correct, Incorrect, Skipped. Each shows a large number (Libre Baskerville 28px) with a label (12px, `ink-300`).
+**Stat row:** Three equal-width cells — Correct, Incorrect, Skipped. Each shows a large number (Noto Serif 28px) with a label (12px, `ink-300`).
 
 **Progress bar:** Full-width, shows score percentage with semantic fill color.
 
@@ -1279,7 +1279,7 @@ border-bottom: 1px solid paper-200
 padding: 0 16px
 display: flex, align-items: center, justify-content: space-between
 
-Left:  [☰ icon button, 44×44px touch target] + [Product name, Libre Baskerville 18px]
+Left:  [☰ icon button, 44×44px touch target] + [Product name, Noto Serif 18px]
 Right: [Avatar, 32px circle] (taps to Profile)
 ```
 
@@ -1312,7 +1312,7 @@ Card internal layout changes from a complex multi-column header to a simplified 
 ```
 [Card]
   ├── [Top row] Subject tag (left) + Status badge (right)
-  ├── [Title] H3 (18px, Libre Baskerville)
+  ├── [Title] H3 (18px, Noto Serif)
   ├── [Subtitle] Class name · Student count (13px, ink-300)
   └── [Footer row] Question count · Duration (left) + Submitted count (right)
 ```
@@ -1488,7 +1488,7 @@ padding-bottom: 80px   /* space for fixed navigation footer */
 
 **Flag button:** Placed inline in the header row, right-aligned. 44×44px touch target.
 
-**Question body:** Libre Baskerville 16px, `ink-700`, `line-height: 1.75`. Slightly smaller than desktop (18px) to avoid excessive line wrapping on narrow screens.
+**Question body:** Noto Serif 16px, `ink-700`, `line-height: 1.75`. Slightly smaller than desktop (18px) to avoid excessive line wrapping on narrow screens.
 
 **Answer options:** Full-width. Padding increases to `14px 16px` for comfortable touch. Gap between options: `10px`.
 
@@ -1693,7 +1693,7 @@ Exama's copy is **clear, direct, and respectful**. Users are under time pressure
 
 | Context | Style |
 |---|---|
-| Page titles | Title case, Libre Baskerville |
+| Page titles | Title case, Noto Serif |
 | Button labels | Title case, imperative verb-first ("Submit Exam", "Add Question") |
 | Status badges | Title case ("In Progress", "Draft") |
 | Table column headers | Title case |
@@ -1812,7 +1812,7 @@ Complete design token reference for implementation.
 
 ```css
 :root {
-  --font-serif: 'Libre Baskerville', Georgia, serif;
+  --font-serif: 'Noto Serif', Georgia, serif;
   --font-sans:  'DM Sans', system-ui, sans-serif;
   --font-mono:  ui-monospace, 'Cascadia Code', monospace;
 
@@ -1861,4 +1861,4 @@ Complete design token reference for implementation.
 
 ---
 
-*Exama Design System v1.0 — Maintained by [kyle2910 (Github)](https://github.com/kyle2910). Covers desktop and mobile.*
+*Exama Design System v1.1 — Maintained by [kyle2910 (Github)](https://github.com/kyle2910). Covers desktop and mobile.*
