@@ -66,40 +66,40 @@
 
 ## 1. Overview & Philosophy
 
-Exama là nền tảng thi trực tuyến và LMS (Learning Management System) dành cho giáo viên và học sinh. Hệ thống thiết kế tồn tại để đảm bảo mọi tương tác đều **rõ ràng, bình tĩnh và đáng tin cậy** — cho phép người dùng tập trung hoàn toàn vào nhiệm vụ trước mắt thay vì giao diện.
+Exama is an online examination and LMS (Learning Management System) platform built for teachers and students. The design system exists to ensure every interaction is **clear, calm, and trustworthy** — allowing users to focus entirely on the task at hand rather than the interface itself.
 
 ### The Dark Slate Metaphor
 
-Phiên bản dark mode của Exama thay thế ẩn dụ "tờ giấy trắng" bằng ẩn dụ **bảng đen học đường** — nền sẫm màu, chữ sáng, tương phản rõ ràng, gợi lên không gian học tập nghiêm túc trong môi trường ánh sáng thấp. Nguyên tắc dịch chuyển:
+The dark mode edition of Exama replaces the "clean sheet of paper" metaphor with the **academic chalkboard** — dark surfaces, luminous type, sharp contrast, evoking a serious learning environment under low-light conditions. The translation principles are:
 
-- **Nền sẫm ấm** thay vì xám lạnh hay đen thuần túy — giữ lại nhiệt độ màu của hệ thống gốc.
-- **Chữ off-white có độ ấm** thay vì trắng tuyệt đối — tránh mỏi mắt trên nền tối.
-- **Accent sáng hơn** để đảm bảo tương phản và dễ nhận biết trên nền tối.
-- **Không có glassmorphism**, không gradient nặng, không độ trong suốt — giao diện đục và dễ đọc như phấn viết trên bảng.
-- **Elevation thể hiện qua độ sáng** của bề mặt thay vì đổ bóng (bóng gần như vô hình trên nền tối).
+- **Warm dark backgrounds** rather than cold grey or pure black — preserving the color temperature of the original system.
+- **Off-white text with warmth** rather than pure white — preventing eye strain against dark surfaces.
+- **Lighter accent values** to ensure sufficient contrast and recognizability on dark backgrounds.
+- **No glassmorphism**, no heavy gradients, no translucency — the interface is opaque and legible, like chalk on a board.
+- **Elevation expressed through surface lightness** rather than shadows — surfaces higher in the z-stack are slightly lighter.
 
 ### Single Mode
 
-Exama Dark Mode là **dark mode only**. Đây là quyết định có chủ ý. Phiên bản này phục vụ các bối cảnh thi trong môi trường ánh sáng thấp (phòng tối, thi ban đêm, học muộn) hoặc theo sở thích cá nhân giảm ánh sáng màn hình. Duy trì một chế độ visual duy nhất đảm bảo tính nhất quán màu sắc tuyệt đối, giảm phức tạp triển khai, và giữ nguyên ẩn dụ "bảng đen" xuyên suốt.
+Exama Dark Mode is **dark mode only**. This is a deliberate decision. This edition serves examination contexts in low-light environments (dim rooms, evening sessions, late-night study) or personal preference for reduced screen brightness. Maintaining a single visual mode ensures absolute color consistency, reduces implementation complexity, and keeps the "chalkboard" metaphor intact throughout.
 
 ---
 
 ## 2. Design Principles
 
 ### 1. Clarity over Cleverness
-Mọi element phải truyền đạt mục đích ngay lập tức. Nhãn phải rõ ràng. Trạng thái phải không mơ hồ. Chúng ta không bao giờ hy sinh khả năng đọc vì thẩm mỹ — đặc biệt quan trọng trên nền tối nơi độ tương phản dễ bị hy sinh cho cái đẹp.
+Every element must communicate its purpose immediately. Labels are explicit. States are unambiguous. We never sacrifice readability for aesthetics — especially critical on dark surfaces where contrast is easily traded away for visual style.
 
 ### 2. Calm by Default
-Giao diện không cố gắng gây ấn tượng. Nó là một công cụ. Tone màu trung tính, độ sâu đổ bóng khiêm tốn, và chuyển động có kiểm soát ngăn UI cạnh tranh sự chú ý của người dùng trong những khoảnh khắc căng thẳng cao như khi đang thi.
+The interface is not trying to impress. It is a tool. Neutral tones, modest shadow depths, and restrained motion prevent the UI from competing for the user's attention during high-stakes moments like active exams.
 
 ### 3. Structured Hierarchy
-Thông tin được phân lớp rõ ràng: nền trang → bề mặt card → element tương tác → trạng thái focused/active. Trên dark mode, hierarchy được thể hiện qua **độ sáng của bề mặt** (surface lightness) thay vì đổ bóng — bề mặt nằm cao hơn trong z-stack sẽ sáng hơn một chút.
+Information is layered clearly: page background → card surface → interactive element → focused/active state. In dark mode, hierarchy is expressed through **surface lightness** rather than drop shadows — surfaces higher in the z-stack use a slightly lighter `slate` token.
 
 ### 4. Educational Context Respect
-Typography dùng serif cho heading để truyền đạt sự nghiêm túc học thuật. Mật độ nội dung phù hợp — không quá thưa (có vẻ coi thường) và không quá dày đặc (choáng ngợp). Chúng ta đối xử với người dùng như những người lớn thông minh.
+Typography leans on serif faces for headings to communicate academic seriousness. Content density is appropriate — not too sparse (patronizing) and not too dense (overwhelming). We treat users as intelligent adults.
 
 ### 5. Reliability over Delight
-Hệ thống này ưu tiên **tính dự đoán được** hơn bất ngờ. Trạng thái hover tinh tế. Chuyển đổi nhanh. Phản hồi tức thì và không mơ hồ. Sự tin tưởng được xây dựng qua tính nhất quán, không phải animation.
+This system favors **predictability** over surprise. Hover states are subtle. Transitions are quick. Feedback is immediate and unambiguous. Trust is built through consistency, not animation.
 
 ---
 
@@ -107,41 +107,41 @@ Hệ thống này ưu tiên **tính dự đoán được** hơn bất ngờ. Tr�
 
 ### 3.1 Color
 
-Palette được tổ chức thành bốn nhóm: **Slate** (bề mặt tối), **Glow** (chữ sáng), **Accent**, và **Semantic**.
+The palette is organized into four groups: **Slate** (dark surfaces), **Glow** (light foregrounds), **Accent**, and **Semantic**.
 
 #### Slate — Surface Colors
 
-Dùng cho nền trang, bề mặt card, divider và nền input. Tone ấm nhẹ (hơi nâu-xám) được duy trì để tránh cảm giác lạnh lẽo của grey thuần.
+Used for page backgrounds, card surfaces, dividers, and input backgrounds. A slight warm tone (brown-black) is maintained throughout to avoid the cold feeling of pure grey.
 
 | Token | Hex | Usage |
 |---|---|---|
-| `slate-900` | `#16140f` | Page background (body) — tối nhất |
+| `slate-900` | `#16140f` | Page background (body) — darkest |
 | `slate-800` | `#1e1c16` | Sidebar background, primary card surface |
 | `slate-700` | `#272419` | Secondary card surface, hover states, input background |
 | `slate-600` | `#312e22` | Prominent borders, elevated panel background |
-| `slate-500` | `#3d392c` | Dividers, border tích cực, active nav background |
+| `slate-500` | `#3d392c` | Dividers, active borders, active nav background |
 
-Tone ấm (nâu-đen) trong tất cả giá trị slate là có chủ ý — nó giữ nguyên nhiệt độ màu của hệ thống gốc thay vì chuyển sang xám lạnh. Không bao giờ dùng `#000000` thuần.
+The warm undertone (brown-black) in all slate values is intentional — it preserves the color temperature of the original light mode system rather than shifting to cold grey. Pure `#000000` is never used.
 
 #### Glow — Text & Foreground Colors
 
-Dùng cho tất cả nội dung typography và iconography. Tên "Glow" phản ánh bản chất của chữ sáng trên nền tối.
+Used for all typographic content and iconography. The name "Glow" reflects the nature of light text on a dark surface.
 
 | Token | Hex | Usage |
 |---|---|---|
-| `glow-100` | `#2e2b22` | Rất subtle — shadow trên text, chi tiết decoration |
-| `glow-200` | `#4a4638` | Disabled text, placeholder |
+| `glow-100` | `#2e2b22` | Very subtle — decorative details, text shadows |
+| `glow-200` | `#4a4638` | Disabled text, placeholder text |
 | `glow-300` | `#6b6555` | Secondary labels, helper text, captions |
-| `glow-400` | `#9e9784` | Secondary body text, nav items resting |
+| `glow-400` | `#9e9784` | Secondary body text, resting nav items |
 | `glow-500` | `#cec7b5` | Primary body text |
 | `glow-600` | `#e2ddd1` | Headings, strong content |
 | `glow-700` | `#f2ede4` | Maximum contrast — display headings only |
 
-Trắng thuần (`#fff`) không bao giờ được dùng. Tone sáng nhất `glow-700` giữ lại độ ấm.
+Pure white (`#fff`) is never used. The lightest tone `glow-700` retains warmth.
 
 #### Accent — Interactive Blue
 
-Màu tương tác duy nhất trong hệ thống. Sáng hơn so với light mode để đảm bảo đủ tương phản trên nền tối.
+The single interactive color in the system. Values are lighter than the light mode counterpart to ensure sufficient contrast on dark backgrounds. The scale is inverted: lower numbers are darker (used for backgrounds), higher numbers are lighter (used for text and icons on dark surfaces).
 
 | Token | Hex | Usage |
 |---|---|---|
@@ -153,37 +153,37 @@ Màu tương tác duy nhất trong hệ thống. Sáng hơn so với light mode 
 | `accent-400` | `#7aa3c8` | Outline button text, secondary accent, links |
 | `accent-300` | `#adc5df` | Subtle accent tints, icon fills |
 
-Accent đã được đảo chiều so với light mode — các số nhỏ hơn giờ là tối hơn (dùng cho nền), số lớn hơn là sáng hơn (dùng cho text/icon trên nền tối).
+The blue reads as authoritative and calm rather than playful or urgent, consistent with the light mode system.
 
 #### Semantic — Status Colors
 
-Bốn màu semantic, mỗi màu có dải tint tối (900) đến sáng (300) phù hợp với nền dark.
+Four semantic colors, each with a dark background tint, a mid border tint, and a bright base value suitable for text and icons on dark surfaces.
 
-| Role | Base Hex (text/icon) | Background Hex | Usage |
-|---|---|---|---|
-| **Success** | `#6ec46e` | `#0d200d` | Correct answers, submitted exams, passing scores |
-| **Warning** | `#e8b84b` | `#221800` | Expiring timers, flagged questions, draft status |
-| **Danger** | `#e07272` | `#220d0d` | Wrong answers, violations, failed submissions |
-| **Info** | `#7aa3c8` | `#0d1e2d` | Informational callouts (shares accent palette) |
+| Role | Base (text/icon) | Background | Border | Usage |
+|---|---|---|---|---|
+| **Success** | `#6ec46e` | `#0d200d` | `#1a4a1a` | Correct answers, submitted exams, passing scores |
+| **Warning** | `#e8b84b` | `#221800` | `#4a3200` | Expiring timers, flagged questions, draft status |
+| **Danger** | `#e07272` | `#220d0d` | `#4a1a1a` | Wrong answers, violations, failed submissions |
+| **Info** | `#7aa3c8` | `#0d1e2d` | `#112b47` | Informational callouts (shares accent palette) |
 
-Mỗi màu semantic được dùng ở ba mức tonal:
-- **Background tint** — nền alert/callout (rất tối, bão hòa thấp)
-- **Border tint** — viền alert hoặc tag (trung bình)
-- **Base** — icon, text hoặc fill thanh tiến trình (sáng nhất, đủ tương phản trên nền tối)
+Each semantic color is used at three tonal levels:
+- **Background tint** — alert/callout background (very dark, low saturation)
+- **Border tint** — alert border or tag border (mid value)
+- **Base** — icon, text, or progress fill (brightest, sufficient contrast on dark backgrounds)
 
-Màu semantic **không bao giờ dùng cho mục đích trang trí**, chỉ để truyền đạt trạng thái.
+Semantic colors are **never used for decorative purposes**, only to communicate status.
 
 #### Color Contrast & Accessibility
 
-- Tất cả body text (`glow-500` trên `slate-900`) đạt tỉ lệ tương phản tối thiểu **8.2:1** (WCAG AAA).
-- Primary button (white `glow-700` trên `accent-500`) đạt **4.8:1** (WCAG AA).
-- Semantic badge text (`danger` base trên `danger` background) đạt tối thiểu **5.0:1**.
+- All body text (`glow-500` on `slate-900`) achieves a minimum contrast ratio of **8.2:1** (WCAG AAA).
+- Primary button (`glow-700` on `accent-500`) achieves **4.8:1** (WCAG AA).
+- Semantic badge text (semantic base on semantic background) achieves minimum **5.0:1**.
 
 ---
 
 ### 3.2 Typography
 
-Hệ thống type dùng hai typeface: một serif cho authority và hierarchy, một sans-serif cho khả năng đọc ở kích thước nhỏ. **Hoàn toàn giống light mode** — typography không thay đổi giữa hai chế độ, chỉ màu sắc thay đổi.
+The type system uses two typefaces: one serif for authority and hierarchy, one sans-serif for readability at small sizes. **Typography is identical to the light mode system** — only color values change between modes.
 
 #### Typefaces
 
@@ -192,9 +192,9 @@ Hệ thống type dùng hai typeface: một serif cho authority và hierarchy, m
 | **Display & Headings** | Noto Serif | Serif — academic, authoritative, traditional |
 | **Body & UI** | DM Sans | Sans-serif — geometric, neutral, functional |
 
-**Noto Serif** được chọn vì duy trì legibility ở kích thước heading nhỏ hơn trong khi vẫn thể hiện sự đáng tin cậy học thuật. Các letterform của nó render sạch trên màn hình và hỗ trợ đầy đủ tiếng Việt.
+**Noto Serif** was chosen over modern serifs (Playfair, Georgia) because it maintains legibility at smaller heading sizes while still projecting academic credibility. Its letterforms render cleanly on screen and provide full Vietnamese language support.
 
-**DM Sans** được chọn vì x-height rộng rãi, counter mở và tính cách gần như vô hình — lý tưởng cho đọc dài trong khi thi và cho UI label cần lùi vào nền.
+**DM Sans** was chosen for its generous x-height, open counters, and near-invisible personality — ideal for long-form reading during exams and for UI labels that should fade into the background.
 
 #### Type Scale
 
@@ -213,17 +213,17 @@ Hệ thống type dùng hai typeface: một serif cho authority và hierarchy, m
 
 #### Label Convention
 
-Labels (table headers, section identifiers, metadata) dùng **DM Sans 11px, font-weight 600, letter-spacing 0.07em, uppercase**. Tạo sự tách biệt visual với nội dung mà không cần màu khác hay size khác.
+Labels (table headers, section identifiers, metadata) use **DM Sans 11px, font-weight 600, letter-spacing 0.07em, uppercase**. This creates visual separation from content without requiring a different color or size.
 
 #### Question Text
 
-Exam question body text dùng **Noto Serif at 18px, glow-700, line-height 1.7**. Mặt serif báo hiệu "đây là nội dung cần đọc cẩn thận." Line-height rộng rãi giảm lỗi theo dõi mắt trên các câu hỏi toán học hoặc khoa học dày đặc.
+Exam question body text uses **Noto Serif at 18px, glow-700, line-height 1.7**. The serif face signals "this is content to be read carefully." The generous line height reduces eye-tracking errors on dense mathematical or scientific questions.
 
 ---
 
 ### 3.3 Spacing
 
-Scale spacing dựa trên **đơn vị cơ sở 4px**. Tất cả giá trị padding, margin và gap của component đều là bội số của 4. **Hoàn toàn giống light mode.**
+The spacing scale is based on a **4px base unit**. All component padding, margin, and gap values are multiples of 4. **Identical to the light mode system.**
 
 | Token | Value | Common Usage |
 |---|---|---|
@@ -244,7 +244,7 @@ Scale spacing dựa trên **đơn vị cơ sở 4px**. Tất cả giá trị pad
 
 ### 3.4 Border Radius
 
-Giá trị border radius hoàn toàn giống light mode — không thay đổi giữa hai chế độ.
+Border radius values are identical to the light mode system — they do not change between modes.
 
 | Token | Value | Usage |
 |---|---|---|
@@ -255,13 +255,13 @@ Giá trị border radius hoàn toàn giống light mode — không thay đổi g
 | `radius-xl` | 16px | Feature panels, illustration frames |
 | `radius-full` | 9999px | Avatars, pill buttons, circular icon buttons |
 
-`radius-base` (6px) là giá trị được dùng nhiều nhất. Nó cung cấp đủ độ mềm mại để cảm giác thân thiện mà không trông như một consumer app.
+`radius-base` (6px) is the most commonly used value. It provides just enough softness to feel approachable without looking like a consumer app.
 
 ---
 
 ### 3.5 Shadows & Elevation
 
-Trên dark mode, đổ bóng gần như vô hình vì nền đã tối. **Elevation được thể hiện chủ yếu qua độ sáng của bề mặt (surface lightness)** — bề mặt cao hơn trong z-stack dùng token `slate` sáng hơn. Bóng nhẹ được dùng để hỗ trợ thêm tính tách biệt khi cần.
+On dark mode, drop shadows are nearly invisible because the background is already dark. **Elevation is expressed primarily through surface lightness** — surfaces higher in the z-stack use a lighter `slate` token. Subtle shadows supplement this where additional separation is needed.
 
 | Token | CSS Value | Surface Token | Usage |
 |---|---|---|---|
@@ -271,21 +271,21 @@ Trên dark mode, đổ bóng gần như vô hình vì nền đã tối. **Elevat
 | `shadow-dark-lg` | `0 8px 20px rgba(0,0,0,0.50)` | `slate-600` | Modals, floating panels |
 | `shadow-inset` | `inset 0 1px 3px rgba(0,0,0,0.30)` | — | Input fields, inset elements |
 
-**Elevation Rule:** Mỗi layer z-stack dùng token slate sáng hơn một bậc. Ví dụ: nền trang dùng `slate-900`, card dùng `slate-800`, modal dùng `slate-700`. Viền (`slate-600`) vẫn cần thiết để xác định hình dạng element — không bao giờ dùng shadow một mình.
+**Elevation Rule:** Each z-stack layer uses a one-step lighter slate token. Example: page background uses `slate-900`, cards use `slate-800`, modals use `slate-700`. A border (`slate-600`) is still required to define element shape — never use shadow alone.
 
 ---
 
 ### 3.6 Iconography
 
-Icons được lấy từ **Heroicons (outline)**, 24px viewBox, render ở 16px hoặc 20px tùy context. Line weight là `stroke-width: 1.5` cho UI icons và `stroke-width: 2` cho status icons.
+Icons are sourced from **Heroicons (outline)**, 24px viewBox, rendered at 16px or 20px depending on context. Line weight is `stroke-width: 1.5` for UI icons and `stroke-width: 2` for status icons (which need to be read quickly at small sizes).
 
-**Quy tắc màu (dark mode):**
+**Color rules (dark mode):**
 - Navigation icons: `glow-400` (resting), `accent-400` (active)
-- Action icons trong button: kế thừa từ màu text button
-- Status icons: dùng màu semantic tương ứng (base sáng, e.g. `#6ec46e`, `#e07272`)
-- Decorative/empty-state icons: `glow-300` hoặc `glow-400`
+- Action icons within buttons: inherit from button text color
+- Status icons: use the corresponding semantic base color (`#6ec46e`, `#e07272`, etc.)
+- Decorative/empty-state icons: `glow-300` or `glow-400`
 
-Icons **không bao giờ dùng một mình** mà không có accessible label (visible text hoặc ARIA label).
+Icons are **never used alone** without an accessible label (either visible text or an ARIA label).
 
 ---
 
@@ -293,7 +293,7 @@ Icons **không bao giờ dùng một mình** mà không có accessible label (vi
 
 ### 4.1 Buttons
 
-Buttons là trigger action chính. Hệ thống định nghĩa sáu variant, bốn size và bốn trạng thái tương tác.
+Buttons are the primary action trigger. The system defines six variants, four sizes, and four interaction states.
 
 #### Variants
 
@@ -317,19 +317,19 @@ Buttons là trigger action chính. Hệ thống định nghĩa sáu variant, b�
 
 #### States
 
-- **Resting:** Định nghĩa bởi variant ở trên.
-- **Hover:** Background sáng hơn một bậc token (e.g., `accent-500` → `accent-400`). Không có scale transform.
-- **Active/Pressed:** Background sáng hơn hai bậc. `box-shadow: inset 0 1px 2px rgba(0,0,0,0.20)`.
-- **Disabled:** `opacity: 0.4`, `cursor: not-allowed`. Không thay đổi màu.
-- **Loading:** Spinner icon (16px, `animate-spin`) đặt trước, text button giữ nguyên, button bị disabled. Spinner kế thừa màu text button.
+- **Resting:** Defined by variant above.
+- **Hover:** Background lightens by one token step (e.g., `accent-500` → `accent-400`). No scale transform.
+- **Active/Pressed:** Background lightens by two steps. `box-shadow: inset 0 1px 2px rgba(0,0,0,0.20)`.
+- **Disabled:** `opacity: 0.4`, `cursor: not-allowed`. No color change.
+- **Loading:** Spinner icon (16px, `animate-spin`) prepended, button text retained, button disabled. Spinner inherits button text color.
 
 #### Icon Buttons
 
-Square icon-only button dùng equal padding để tạo hình vuông hoàn hảo (`w-8 h-8` / `w-9 h-9`). Phải luôn có thuộc tính `title` và ARIA label. Theo cùng variant system như text button.
+Square icon-only buttons use equal padding to form a perfect square (`w-8 h-8` / `w-9 h-9`). They must always carry a `title` attribute and ARIA label. They follow the same variant system as text buttons.
 
 #### Button Groups
 
-Khi hai hoặc nhiều button chia sẻ context (e.g., modal footer, question navigation), chúng được đặt trong một hàng `flex` với khoảng cách `gap-3` (12px). Action chính luôn ở **bên phải**. Action hủy phá (destructive) luôn ở **bên trái** hoặc tách biệt bằng khoảng cách bổ sung.
+When two or more buttons share a context (e.g., modal footer, question navigation), they are placed in a `flex` row with a `gap-3` (12px) separation. The primary action is always on the **right**. Destructive actions are always on the **left** or separated with additional space.
 
 ---
 
@@ -347,22 +347,22 @@ background: slate-700
 
 **Focus state:** `border-color: accent-400`, `box-shadow: 0 0 0 3px rgba(78,132,180,0.20)`
 **Error state:** `border-color: #e07272`, `box-shadow: 0 0 0 3px rgba(224,114,114,0.18)`
-**Success state:** `border-color: #6ec46e`, optional checkmark icon bên phải
+**Success state:** `border-color: #6ec46e`, optional checkmark icon on the right
 **Disabled state:** `background: slate-800`, `color: glow-300`, `cursor: not-allowed`
 
-Error messages xuất hiện **bên dưới input** với màu `#e07272`, 12px, DM Sans. Không bao giờ bên trong input hoặc dưới dạng tooltip.
+Error messages appear **below the input** in `#e07272`, 12px, DM Sans. Never inside the input or as a tooltip.
 
 #### Textarea
 
-Giống text input. `resize: vertical` được phép nhưng `resize: horizontal` bị vô hiệu hóa. Chiều cao tối thiểu: 3 hàng (~72px).
+Identical to text input. `resize: vertical` is permitted but `resize: horizontal` is disabled. Minimum height: 3 rows (~72px).
 
 #### Select
 
-Border/radius/padding giống text input. Mũi tên native `<select>` được giữ nguyên nhưng có thể thay bằng SVG chevron tùy chỉnh. `cursor: pointer` là bắt buộc.
+Identical border/radius/padding to text input. The native `<select>` arrow is preserved but can be replaced with a custom SVG chevron in custom implementations. `cursor: pointer` is required.
 
 #### Checkbox
 
-Custom checkbox 16×16px với viền tròn 3px (`radius-sm`). Trạng thái checked dùng nền `accent-500` với SVG checkmark màu `glow-700`. Trạng thái indeterminate dùng thanh ngang trong `accent-400`.
+Custom checkboxes are 16×16px with a 3px rounded border (`radius-sm`). The checked state uses `accent-500` fill with a `glow-700` SVG checkmark. The indeterminate state uses a horizontal bar in `accent-400`.
 
 ```
 Unchecked:  border: 1.5px solid glow-300, background: slate-700
@@ -372,7 +372,7 @@ Disabled:   background: slate-800, border: slate-500
 
 #### Radio Button
 
-Custom radio button hình tròn 16×16px. Trạng thái selected hiển thị chấm tròn 8px trong `accent-500`.
+Custom radio buttons are 16×16px circles. The selected state shows an 8px inner dot in `accent-500`.
 
 ```
 Unselected:  border: 1.5px solid glow-300, background: slate-700
@@ -382,13 +382,13 @@ Disabled:    background: slate-800, border: slate-500
 
 #### Search Input
 
-Text input chuẩn với icon `search` (`glow-400`, 16px) được positioned tuyệt đối tại `left: 12px`. Input padding-left tăng lên 36px để tránh text bị chồng lên.
+A standard text input with a `search` icon (`glow-400`, 16px) absolutely positioned at `left: 12px`. Input padding-left increases to 36px to avoid text overlap.
 
 #### Form Label
 
-Labels nằm **phía trên** control, không bao giờ bên trong (placeholder không phải label). Typography: DM Sans 14px, `font-weight: 500`, `glow-500`. Required fields thêm `*` màu `#e07272`.
+Labels sit **above** their control, never inside (placeholder is not a label). Typography: DM Sans 14px, `font-weight: 500`, `glow-500`. Required fields append a `*` in `#e07272`.
 
-Section labels (gộp các input liên quan) dùng Label convention: DM Sans 11px, 600 weight, uppercase, `letter-spacing: 0.07em`, `glow-300`.
+Section labels (grouping related inputs) use the Label convention: DM Sans 11px, 600 weight, uppercase, `letter-spacing: 0.07em`, `glow-300`.
 
 ---
 
@@ -396,7 +396,7 @@ Section labels (gộp các input liên quan) dùng Label convention: DM Sans 11p
 
 #### Status Badges
 
-Dùng độc quyền cho **machine states** — trạng thái kỳ thi, trạng thái nộp bài, phân loại điểm số. Không tương tác.
+Used exclusively for **machine states** — exam status, submission status, score category. They are non-interactive.
 
 ```
 font: DM Sans 11px, font-weight: 600, uppercase, letter-spacing: 0.06em
@@ -413,11 +413,11 @@ border: 1px solid (semantic border tint)
 | Draft | `slate-700` | `glow-400` | `slate-500` |
 | Grading | `accent-900` | `accent-400` | `accent-800` |
 
-Tiền tố chấm màu (`●`) có thể đứng trước nhãn cho các trạng thái "live" (Active, Grading) để phân biệt thêm.
+A colored dot prefix (`●`) may precede the label for "live" states (Active, Grading) to further distinguish them.
 
 #### Score Badges
 
-Dùng để hiển thị điểm số dạng số thoáng qua. Spec visual giống status badge nhưng font size là 12px và không uppercase.
+Used to display numerical scores at a glance. Same visual spec as status badges but font size is 12px and no uppercase.
 
 | Score Range | Background | Text |
 |---|---|---|
@@ -427,7 +427,7 @@ Dùng để hiển thị điểm số dạng số thoáng qua. Spec visual giố
 
 #### Subject/Category Tags
 
-Tags tương tác hoặc có thể lọc dùng để phân loại nội dung. Hỗ trợ icon xóa tùy chọn (`×`).
+Interactive or filterable tags used to classify content. They support an optional remove icon (`×`).
 
 ```
 font: DM Sans 12px, font-weight: 500
@@ -436,13 +436,13 @@ border-radius: 4px
 border: 1px solid (matching dark tint)
 ```
 
-Tags dùng màu để phân biệt category môn học nhưng mapping category-to-color phải được áp dụng nhất quán xuyên suốt sản phẩm, dùng các tint tối phù hợp dark background.
+Tags use color to distinguish subject categories (blue for math, green for science, etc.) but any category-to-color mapping must use dark-mode-appropriate tints and be applied consistently across the product.
 
 ---
 
 ### 4.4 Cards
 
-Cards là container nội dung chính. Tất cả cards chia sẻ:
+Cards are the primary content containers. All cards share:
 
 ```
 background: slate-800
@@ -453,15 +453,15 @@ box-shadow: shadow-dark
 
 #### Card Variants
 
-**Default Card** — Container chuẩn cho data, form và nội dung nhóm.
+**Default Card** — Standard container for data, forms, and content groupings.
 
-**Hoverable Card** (`card-hover`) — Dùng khi card có thể click (e.g., danh sách kỳ thi). On hover: `border-color: accent-600`, `background: slate-700`, `box-shadow: shadow-dark-md`. Không có transform hoặc scale effect.
+**Hoverable Card** (`card-hover`) — Used when the card is clickable (e.g., exam list items). On hover: `border-color: accent-600`, `background: slate-700`, `box-shadow: shadow-dark-md`. No transform or scale effect.
 
-**Stat Card** — Hiển thị một KPI metric duy nhất. Cấu trúc: label (Label style, `glow-300`) → số lớn (Noto Serif, 36px, `glow-700`) → supporting text (12px, `glow-300`). Có thể có thanh tiến trình nhỏ bên dưới.
+**Stat Card** — Displays a single KPI metric. Structure: label (Label style, `glow-300`) → large number (Noto Serif, 36px, `glow-700`) → supporting text (12px, `glow-300`). May include a small progress bar below.
 
-**Accent Border Card** — Thêm viền trái `3px solid accent-500` cho nội dung informational hoặc nổi bật (e.g., card "Note"). Thay thế viền 1px mặc định ở cạnh trái.
+**Accent Border Card** — A left `3px solid accent-500` border is added for informational or highlighted content (e.g., a "Note" card). This replaces the default 1px border on the left side.
 
-**Semantic Border Card** — Giống trên nhưng dùng viền màu semantic tương ứng (`#6ec46e`, `#e8b84b`, hoặc `#e07272`) cho cạnh trái để truyền đạt context trạng thái.
+**Semantic Border Card** — Same as above but using `#6ec46e`, `#e8b84b`, or `#e07272` for the left border to communicate status context.
 
 #### Card Anatomy
 
@@ -473,13 +473,13 @@ box-shadow: shadow-dark
   └── [Footer] (optional) — metadata, action row
 ```
 
-Card padding nội bộ là `p-5` (20px) cho compact cards hoặc `p-6` (24px) cho standard cards.
+Internal card padding is `p-5` (20px) for compact cards or `p-6` (24px) for standard cards.
 
 ---
 
 ### 4.5 Alerts & Callouts
 
-Alerts truyền đạt phản hồi cấp hệ thống. Chúng full-width trong container và không thể dismiss theo mặc định (biến thể dismissible phải được implement rõ ràng).
+Alerts communicate system-level feedback. They are full-width within their container and not dismissible by default (dismissible variants must be explicitly implemented).
 
 #### Structure
 
@@ -488,7 +488,7 @@ Alerts truyền đạt phản hồi cấp hệ thống. Chúng full-width trong 
 padding: 16px
 border-radius: 6px
 border: 1px solid (semantic border tint)
-background: (semantic background tint — rất tối)
+background: (semantic background tint — very dark)
 ```
 
 #### Variants
@@ -500,12 +500,12 @@ background: (semantic background tint — rất tối)
 | Warning | `#221800` | `#4a3200` | `#e8b84b` | `#f0cc72` |
 | Danger | `#220d0d` | `#4a1a1a` | `#e07272` | `#ea9090` |
 
-Alert messages dùng câu hoàn chỉnh với dấu chấm. Mô tả **tình huống** tiếp theo là **những gì người dùng nên làm**, khi áp dụng.
+Alert messages use complete sentences with a period. They describe the **situation** followed by **what the user should do**, when applicable.
 
-> ✅ "Bài thi của bạn đã được nộp thành công lúc 09:42."
-> ✅ "Còn 5 phút. Xem lại các câu hỏi chưa trả lời."
-> ❌ "Đã nộp" (quá ngắn gọn)
-> ❌ "LỖI: nộp bài thất bại!!!" (tone báo động)
+> ✅ "Your exam has been submitted successfully at 09:42."
+> ✅ "5 minutes remaining. Review any unanswered questions."
+> ❌ "Submitted" (too terse)
+> ❌ "ERROR: submission failed!!!" (alarming tone)
 
 ---
 
@@ -513,28 +513,28 @@ Alert messages dùng câu hoàn chỉnh với dấu chấm. Mô tả **tình hu�
 
 #### Linear Progress Bar
 
-Dùng để hiển thị hoàn thành kỳ thi, số học sinh đã nộp, hoặc phần trăm điểm.
+Used to display completion of an exam, number of students who have submitted, or score percentage.
 
 ```
-Track:  background: slate-600, border-radius: 99px, height: 6px hoặc 8px
+Track:  background: slate-600, border-radius: 99px, height: 6px or 8px
 Fill:   border-radius: 99px, height: 100%
 ```
 
-Fill colors: `accent-500` (mặc định / tiến trình trung tính), `#6ec46e` (metric tích cực), `#e8b84b` (metric cần chú ý).
+Fill colors: `accent-500` (default / neutral progress), `#6ec46e` (positive metric), `#e8b84b` (caution metric).
 
-Progress bars luôn kèm theo một hàng label phía trên hiển thị giá trị hiện tại và tổng (e.g., "18 / 25 đã trả lời").
+Progress bars are always accompanied by a label row above showing the current value and total (e.g., "18 / 25 answered").
 
 #### Circular / Spinner
 
-Chỉ dùng trong trạng thái loading của button và async data loading. 16px, `stroke-width: 3`, `stroke-dasharray: 30 60`, với animation xoay 1s linear infinite. Màu kế thừa từ context.
+Used only in button loading states and async data loading. 16px, `stroke-width: 3`, `stroke-dasharray: 30 60`, with a rotation animation at 1s linear infinite. Color inherits from context.
 
-**Hệ thống không dùng skeleton loader.** Trạng thái loading được xử lý bằng spinner trong button kích hoạt hoặc text "Đang tải..." tối giản trong content area.
+**The system does not use skeleton loaders.** Loading states are handled with a spinner in the triggering button or a minimal "Loading…" text within the content area.
 
 ---
 
 ### 4.7 Tooltips
 
-Tooltips cung cấp context bổ sung khi hover. Chúng không quan trọng — nội dung thiết yếu phải hiển thị mặc định.
+Tooltips provide supplemental context on hover. They are non-critical — content that is essential must be visible by default.
 
 ```
 background: slate-600
@@ -548,15 +548,15 @@ position: above the trigger (bottom: calc(100% + 6px))
 delay: 200ms appear, instant disappear
 ```
 
-Tooltips xuất hiện trên icon `?` help, text bị cắt ngắn và icon-only button. Không chứa element tương tác (link, button). Chiều rộng tối đa: 240px với text wrapping.
+Tooltips appear on `?` help icons, truncated text, and icon-only buttons. They do not contain interactive elements (links, buttons). Maximum width: 240px with text wrapping.
 
 ---
 
 ### 4.8 Modals & Dialogs
 
-Modals ngắt luồng hiện tại để yêu cầu quyết định hoặc hiển thị nội dung focused.
+Modals interrupt the current flow to request a decision or display focused content.
 
-**Overlay:** `background: rgba(0, 0, 0, 0.60)` — tối hơn so với light mode để tạo đủ tương phản.
+**Overlay:** `background: rgba(0, 0, 0, 0.60)` — darker than the light mode equivalent to create sufficient contrast against the dark page background.
 
 **Dialog card:**
 ```
@@ -579,16 +579,16 @@ padding: 24px
 ```
 
 **Usage rules:**
-- Tối đa một modal mở tại một thời điểm. Không có nested modal.
-- Tất cả modal phải có `aria-modal="true"` và focus-trap behavior.
-- Đóng bằng: nút ✕, phím Escape, click overlay (trừ khi action là destructive — thì click overlay bị vô hiệu hóa).
-- Destructive confirmation modal (xóa, kết thúc thi) phải yêu cầu click button rõ ràng. Không thể dismiss bằng cách click overlay.
+- Maximum one modal open at a time. No nested modals.
+- All modals must have an `aria-modal="true"` and focus-trap behavior.
+- Close on: ✕ button, Escape key, overlay click (unless the action is destructive — then overlay click is disabled).
+- Destructive confirmation modals (delete, end exam) must require explicit button click. They cannot be dismissed by clicking the overlay.
 
 ---
 
 ### 4.9 Tables
 
-Tables hiển thị data có cấu trúc — danh sách học sinh, kết quả thi, ngân hàng câu hỏi.
+Tables display structured data sets — student lists, exam results, question banks.
 
 #### Header Row
 
@@ -609,40 +609,40 @@ border-bottom: 1px solid slate-700
 vertical-align: middle
 ```
 
-Row hover state: `background: slate-700`. Tinh tế — đủ để thấy ranh giới hàng mà không gây mất tập trung.
+Row hover state: `background: slate-700`. This is subtle — just enough to show the row boundary without being distracting.
 
-Hàng cuối cùng không có bottom border (kết thúc visual).
+Last row has no bottom border (visual closure).
 
 #### Column Types
 
-- **Identity column** (tên học sinh): Avatar (28px circle, initials, accent tint) + tên trong `glow-600 font-medium`.
-- **Date/Time column:** `glow-400`, monospace nếu cần độ chính xác.
-- **Score column:** Màu theo ngưỡng semantic — `#6ec46e` (≥ 8.0), `#e8b84b` (5.0–7.9), `#e07272` (< 5.0).
+- **Identity column** (student name): Avatar (28px circle, initials, accent tint) + name in `glow-600 font-medium`.
+- **Date/Time column:** `glow-400`, monospace if precision is needed.
+- **Score column:** Colored by semantic thresholds — `#6ec46e` (≥ 8.0), `#e8b84b` (5.0–7.9), `#e07272` (< 5.0).
 - **Status column:** Status badge.
-- **Action column:** Text links trong `accent-400`, right-aligned, 14px. Không bao giờ icon-only trong table (accessibility).
+- **Action column:** Text links in `accent-400`, right-aligned, 14px. Never icon-only in tables (accessibility).
 
 #### Empty Table
 
-Khi không có data, table body được thay thế bằng empty state component căn giữa trong một hàng kéo dài qua tất cả cột.
+When no data exists, the table body is replaced with an empty state component centered in a row that spans all columns.
 
 #### Sortable Columns
 
-Sortable headers thêm icon chevron nhỏ (16px). Cột sort đang active: text `glow-600`, chevron đặc. Cột không active: text `glow-400`, chevron mờ.
+Sortable headers append a small chevron icon (16px). Active sort column: `glow-600` text, filled chevron. Inactive columns: `glow-400` text, muted chevron.
 
 ---
 
 ### 4.10 Navigation — Breadcrumb
 
-Breadcrumbs hiển thị vị trí trang hiện tại trong phân cấp ứng dụng.
+Breadcrumbs show the current page location within the application hierarchy.
 
 ```
 font: DM Sans 14px
 separator: chevron-right SVG, 14px, glow-400
-ancestor links: accent-400, no underline mặc định, underline on hover
-current page: glow-500, không phải link
+ancestor links: accent-400, no underline by default, underline on hover
+current page: glow-500, not a link
 ```
 
-Độ sâu tối đa: 4 cấp. Nếu điều hướng sâu hơn, các cấp trung gian bị cắt ngắn bằng `…`.
+Maximum depth: 4 levels. If deeper navigation exists, intermediate levels are truncated with `…`.
 
 ---
 
@@ -653,20 +653,20 @@ button size: 32px × 32px
 border-radius: 6px
 font: DM Sans 14px
 
-Resting:   background transparent, glow-400
-Active:    background accent-500, text glow-700
-Hover:     background slate-700
+Resting:       background transparent, glow-400
+Active:        background accent-500, text glow-700
+Hover:         background slate-700
 Previous/Next: background slate-700, border slate-500
-Ellipsis:  glow-300, không tương tác
+Ellipsis:      glow-300, not interactive
 ```
 
-Luôn hiển thị: Previous, trang đầu, neighborhood hiện tại (±1), trang cuối, Next. Ellipsis lấp đầy khoảng trống.
+Always show: Previous, first page, current neighborhood (±1), last page, Next. Ellipsis fills gaps.
 
 ---
 
 ### 4.12 Navigation — Tabs
 
-Tabs chuyển đổi giữa các view song song của cùng một context nội dung (không phải giữa các trang).
+Tabs switch between parallel views of the same content context (not between pages).
 
 ```
 Tab strip: border-bottom: 1px solid slate-600 (full width)
@@ -678,30 +678,30 @@ Hover:    glow-600
 Disabled: glow-200, cursor not-allowed
 ```
 
-Tab content area có `padding-top: 20px`. Số tab tối đa khuyến nghị: 6. Vượt quá 6, dùng Select dropdown.
+Tab content area has `padding-top: 20px`. Maximum recommended tabs: 6. Beyond 6, use a Select dropdown instead.
 
 ---
 
 ### 4.13 Empty States
 
-Empty states được hiển thị khi một data container không có item nào — tài khoản mới, kết quả lọc không khớp, hoặc data đã xóa.
+Empty states are shown when a data container has no items to display — new accounts, filtered results with no matches, or cleared data.
 
 #### Anatomy
 
 ```
-[Icon container] — 48×48px, border-radius: 8px, slate-700 hoặc semantic background tint
-    └── [Icon] — 24px, glow-300 hoặc semantic base color
+[Icon container] — 48×48px, border-radius: 8px, slate-700 or semantic background tint
+    └── [Icon] — 24px, glow-300 or semantic base color
 [Heading] — Noto Serif, 18px, glow-600
 [Description] — DM Sans 14px, glow-400, max-width 280px, centered
-[CTA Button] (optional) — Primary hoặc Outline variant
+[CTA Button] (optional) — Primary or Outline variant
 ```
 
-Căn giữa trong container. Chiều cao container tối thiểu để empty state có không gian thở: 200px.
+Center-aligned within the container. Minimum container height for an empty state to breathe: 200px.
 
-**Copy cho empty state nên:**
-- Thân thiện, không xin lỗi ("Chưa có kỳ thi" không phải "Không tìm thấy dữ liệu")
-- Hướng action khi một user action giải quyết được trạng thái
-- Cụ thể với context ("Chưa có kỳ thi" không chỉ "Trống")
+**Empty state copy should be:**
+- Friendly, not apologetic ("No exams yet" not "No data found")
+- Action-oriented when a user action resolves the state
+- Specific to the context ("No exams yet" not just "Empty")
 
 ---
 
@@ -709,21 +709,18 @@ Căn giữa trong container. Chiều cao container tối thiểu để empty sta
 
 ### 5.1 Sidebar Layout
 
-Shell ứng dụng chính cho teacher dashboard.
+The primary application shell for the teacher dashboard.
 
 ```
 [Shell]
-  ├── [Sidebar]   width: 208px, fixed, height: 100vh
+  ├── [Sidebar]   width: 208px, fixed, height: 100vh, background: slate-800
   │     ├── [Branding area] — logo + product name, border-bottom: slate-600
   │     ├── [Navigation items]
   │     │     ├── Nav item — 40px height, 12px 16px padding, gap-2.5
   │     │     └── Active item — nav-active style (see below)
   │     └── [User profile row] — bottom, border-top: slate-600
-  └── [Main content area] — flex-1, overflow-y-auto, padding: 20px–24px
+  └── [Main content area] — flex-1, overflow-y-auto, padding: 20px–24px, background: slate-900
 ```
-
-**Background sidebar:** `slate-800`
-**Background main content:** `slate-900`
 
 **Active nav item style:**
 ```
@@ -732,61 +729,63 @@ border-left: 3px solid accent-500
 color: accent-400
 font-weight: 600
 ```
-Viền trái 3px là active indicator chính. Nó thay thế left padding, vì vậy căn chỉnh icon/text giữ nguyên nhất quán.
+The 3px left border is the primary active indicator. It replaces the left padding, so the icon/text alignment remains consistent.
 
-**Nav item structure:** `[Icon 16px] [Label 14px]` — icon luôn có để hỗ trợ scanning và nhận biết nhanh.
+**Nav item structure:** `[Icon 16px] [Label 14px]` — icon is always present to aid scanning and quick recognition.
 
-**User profile row:** Avatar (28px) + tên (12px, `glow-600`, truncated) + email (11px, `glow-300`, truncated). Overflow menu (⋮) cho phép truy cập logout và settings.
+**User profile row:** Avatar (28px) + name (12px, `glow-600`, truncated) + email (11px, `glow-300`, truncated). An overflow menu (⋮) gives access to logout and settings.
 
 ---
 
 ### 5.2 Dashboard Header
 
-Mỗi trang trong teacher dashboard có header row nhất quán ở đầu main content area.
+Each page within the teacher dashboard has a consistent header row at the top of the main content area.
 
 ```
 [Page Header]
   ├── [Left]
-  │     ├── Breadcrumb (nếu độ sâu > 1)
+  │     ├── Breadcrumb (if depth > 1)
   │     ├── Page title (H1, Noto Serif, glow-700)
   │     └── Subtitle / context (14px, glow-400)
   └── [Right]
-        └── Primary action button (e.g., "+ Kỳ thi mới")
+        └── Primary action button (e.g., "+ New Exam")
 ```
 
-Page title dùng sizing H1 (`30px`), nhưng căn chỉnh visual với card content bên dưới bằng left padding nhất quán. Không có decorative lines hoặc underlines bên dưới title.
+The page title uses H1 sizing (`30px`), but visually aligns with the card content below using consistent left padding. No decorative lines or underlines beneath the title.
 
 ---
 
 ### 5.3 Data Filters
 
-Đặt ngay phía trên table hoặc card list.
+Placed directly above a table or card list.
 
 ```
 [Filter bar]
   ├── [Search input] — flex-1, max-width 320px
-  ├── [Select dropdowns] — cho category/status/class filters
+  ├── [Select dropdowns] — for category/status/class filters
   └── [Right-aligned] — Sort control, Export button (Ghost)
 ```
 
-Active filter xuất hiện dưới dạng **removable tags** bên dưới filter bar, dùng Tag component với icon `×`.
+Active filters appear as **removable tags** below the filter bar, using the Tag component with a `×` icon.
 
 ---
 
 ## 6. Exam UI
 
-Giao diện thi là một visual context riêng biệt so với teacher dashboard. Nó được thiết kế để tối đa hóa sự tập trung cho học sinh và giảm thiểu cognitive load trong đánh giá có rủi ro cao.
+The exam interface is a distinct visual context from the teacher dashboard. It is designed to maximize focus for the student and minimize cognitive load during high-stakes assessment.
 
 ### Desktop Layout Overview
 
-Exama hỗ trợ hai **display mode** để render câu hỏi thi. Mode được giáo viên thiết lập khi tạo bài thi và không thể thay đổi bởi học sinh giữa phiên.
+Exama supports two **display modes** for rendering exam questions. The mode is set by the teacher when creating the exam and cannot be changed by students mid-session.
 
-| Mode | Mặc định | Mô tả |
+| Mode | Default | Description |
 |---|---|---|
-| **Paged** | Không | Một câu hỏi mỗi lần. Điều hướng bằng nút ← Trước / Tiếp theo →. |
-| **Continuous Scroll** | **Có** | Tất cả câu hỏi trong một cột cuộn. Điều hướng bằng cuộn hoặc jump-link Question Map. |
+| **Paged** | No | One question at a time. Navigation via ← Previous / Next → buttons. |
+| **Continuous Scroll** | **Yes** | All questions rendered in a single scrollable column. Navigation via scrolling or Question Map jump-links. |
 
-Trên desktop (≥ 1024px), cả hai mode chia sẻ cùng shell ba vùng:
+Continuous Scroll is the default because it more closely resembles a physical exam paper — students can scroll freely, review earlier answers in context, and have a full sense of the exam's scope at a glance. Paged mode is available for exams where question isolation is pedagogically required.
+
+On desktop (≥ 1024px), both modes share the same three-region shell:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -797,18 +796,18 @@ Trên desktop (≥ 1024px), cả hai mode chia sẻ cùng shell ba vùng:
 │  width: 220px    │         (main content area)              │
 │  fixed height    │         flex-1, scrollable               │
 │  scrolls indep.  │                                          │
-│                  │  — Paged:  một câu + Prev/Next           │
-│  [Nộp bài]       │  — Scroll: tất cả câu hỏi xếp chồng     │
+│                  │  — Paged:  one question + Prev/Next      │
+│  [Submit Exam]   │  — Scroll: all questions stacked         │
 └──────────────────┴──────────────────────────────────────────┘
 ```
 
-Question Map được đặt ở **bên trái** vì nó phục vụ vai trò điều hướng — tương tự mục lục. Người dùng đọc trái-qua-phải; đặt map ở trái nghĩa là nó được nhìn thấy đầu tiên, cung cấp context trước khi tương tác với nội dung câu hỏi.
+The Question Map is deliberately placed on the **left** because it serves a navigational role — analogous to a table of contents. Users scan left-to-right; placing the map on the left means it is seen first, giving context before engaging with the question content.
 
 ---
 
 ### 6.1 Exam Topbar
 
-Thanh cố định ở đầu màn hình thi trong suốt phiên.
+A persistent bar at the top of the exam screen throughout the session.
 
 ```
 height: 56px
@@ -818,16 +817,16 @@ padding: 0 20px
 position: sticky, top: 0, z-index: 40
 ```
 
-**Bên trái:** Logo sản phẩm (Noto Serif, `glow-700`) + separator (`slate-600`, 1px vertical) + tên kỳ thi (DM Sans 14px, `glow-500`).
-**Bên phải:** Timer component + progress indicator ("18 / 25 đã trả lời").
+**Left side:** Product logo (Noto Serif, `glow-700`) + separator (`slate-600`, 1px vertical) + exam name (DM Sans 14px, `glow-500`).
+**Right side:** Timer component + progress indicator ("18 / 25 answered").
 
-Topbar không chứa nút Nộp bài hoặc navigation link. Nó chỉ truyền đạt identity, thời gian và tiến độ. Action Nộp bài nằm độc quyền trong Question Map panel nơi nó yêu cầu điều hướng không gian có chủ đích để đạt đến.
+The topbar does not contain a Submit button or navigation links. It communicates identity, time, and progress only. The Submit action lives exclusively in the Question Map panel where it requires deliberate spatial navigation to reach.
 
 ---
 
 ### 6.2 Question Map — Desktop (Left Panel)
 
-Question Map là **left panel có độ rộng cố định** (220px) tồn tại song song với vùng câu hỏi có thể cuộn. Nó phục vụ cả vai trò điều hướng và tổng quan tiến trình visual.
+The Question Map is a **fixed-width left panel** (220px) that persists alongside the scrollable question area. It serves as both a navigation tool and a visual progress overview.
 
 ```
 width: 220px
@@ -845,7 +844,7 @@ gap: 16px
 
 **Section header:** Label style ("QUESTION MAP"), `glow-300`, `letter-spacing: 0.07em`.
 
-**Question bubbles:** Hình vuông 32×32px trong grid dùng `grid-template-columns: repeat(auto-fill, minmax(32px, 1fr))`, `gap: 6px`. Mỗi bubble là click target điều hướng trực tiếp đến câu hỏi đó.
+**Question bubbles:** 32×32px squares in a responsive grid using `grid-template-columns: repeat(auto-fill, minmax(32px, 1fr))`, `gap: 6px`. Each bubble is a click target that navigates directly to that question. Never hard-code a column count.
 
 | State | Background | Text color | Border |
 |---|---|---|---|
@@ -855,27 +854,27 @@ gap: 16px
 | Flagged | `#221800` | `#e8b84b` | `1.5px solid #4a3200` |
 | Flagged + Answered | `#2a1e00` | `#f0cc72` | `1.5px solid #4a3200` |
 
-Chấm tròn nhỏ (6px, fill `#e8b84b`) xuất hiện ở góc trên-phải của bất kỳ bubble nào đang flagged để vẫn hiển thị kể cả khi bubble ở trạng thái Answered.
+A small dot indicator (6px circle, `#e8b84b` fill) appears at the top-right corner of any flagged bubble to remain visible even when the bubble is in Answered state.
 
-**Legend:** Khối legend nhỏ gọn bên dưới grid. Bốn hàng, mỗi hàng có swatch 12×12px và label (DM Sans 12px, `glow-400`).
+**Legend:** A compact legend block below the grid. Four rows, each with a 12×12px swatch and a label (DM Sans 12px, `glow-400`).
 
-**Spacer:** `flex: 1` giữa legend và nút nộp bài, đẩy nút xuống cuối panel.
+**Spacer:** `flex: 1` between the legend and the submit button, pushing the submit button to the very bottom of the panel.
 
-**Submit button:** Full-width, Danger variant, `margin-top: auto`, ghim xuống đáy panel. Khi click, kích hoạt Confirmation Modal trước khi nộp.
+**Submit button:** Full-width, Danger variant, `margin-top: auto`, pinned to the bottom of the panel. Placement here is deliberate — it is spatially separated from answer options, reducing accidental submission. On click, it triggers a confirmation Modal before submitting.
 
 ```
 [Submit button]
   └── onClick → opens Confirmation Modal
-        ├── Title: "Nộp bài"
-        ├── Body: "Bạn còn X câu chưa trả lời. Hành động này không thể hoàn tác."
-        └── Actions: [Quay lại] (Secondary)  [Nộp ngay] (Danger)
+        ├── Title: "Submit Exam"
+        ├── Body: "You have X unanswered questions. This cannot be undone."
+        └── Actions: [Back to Exam] (Secondary)  [Submit Now] (Danger)
 ```
 
 ---
 
 ### 6.3 Question Panel
 
-Vùng đọc và trả lời chính. Chiếm toàn bộ không gian ngang còn lại sau left panel.
+The main reading and answering area. Takes all remaining horizontal space after the left panel.
 
 ```
 flex: 1
@@ -886,28 +885,28 @@ background: slate-900
 max-width: none
 ```
 
-Nội dung nội bộ (thân câu hỏi + lựa chọn đáp án) bị giới hạn `max-width: 680px` cho độ dài dòng thoải mái, nhưng ràng buộc này nằm trên content wrapper bên trong panel — không phải trên panel.
+Internal content (question body + answer options) is constrained to `max-width: 680px` for comfortable line length, but this constraint sits on the content wrapper inside the panel — not on the panel itself.
 
 #### Paged Mode
 
-Một câu hỏi được hiển thị mỗi lần. Panel render một khối câu hỏi duy nhất và navigation footer.
+One question is displayed at a time. The panel renders a single question block and a navigation footer.
 
 **Question header row:**
-- Number badge: 28×28px vuông, `border-radius: 6px`, `background: accent-500`, `glow-700`, DM Sans 14px bold
-- "Câu X / Y" theo Label style (`glow-400`, uppercase, `letter-spacing: 0.07em`)
-- Flag toggle button (Ghost, icon-only): Toggle trạng thái flagged. Icon: flag outline → flag filled (`#e8b84b`) khi active.
+- Question number badge: 28×28px square, `border-radius: 6px`, `background: accent-500`, `glow-700`, DM Sans 14px bold
+- "Question X / Y" in Label style (`glow-400`, uppercase, `letter-spacing: 0.07em`)
+- Flag toggle button (Ghost, icon-only): Toggles flagged state. Icon: flag outline → flag filled (`#e8b84b`) when active.
 
-**Question body:** Noto Serif 18px, `glow-700`, `line-height: 1.7`. Max content width: `680px`.
+**Question body:** Noto Serif 18px, `glow-700`, `line-height: 1.7`. Maximum content width: `680px`.
 
-**Answer options area:** Ngay bên dưới question body, `margin-top: 24px`.
+**Answer options area:** Directly below the question body, `margin-top: 24px`.
 
-**Navigation footer:** Divider `border-top: 1px solid slate-600`, `margin-top: 32px`, phía trên hàng `flex justify-between`:
-- Trái: "← Trước" (Secondary button) — disabled và mờ trên câu hỏi 1
-- Phải: "Tiếp theo →" (Primary button) — label đổi thành "Kết thúc" ở câu hỏi cuối
+**Navigation footer:** A `border-top: 1px solid slate-600` divider, `margin-top: 32px`, above a `flex justify-between` row:
+- Left: "← Previous" (Secondary button) — disabled and visually muted on question 1
+- Right: "Next →" (Primary button) — label changes to "Finish" on the last question
 
-#### Continuous Scroll Mode *(mặc định)*
+#### Continuous Scroll Mode *(default)*
 
-Tất cả câu hỏi được render như một tài liệu xếp dọc duy nhất.
+All questions are rendered as a single vertically stacked document. The student scrolls through all questions without any pagination step.
 
 **Question block:**
 ```
@@ -916,7 +915,7 @@ border-bottom: 1px solid slate-600
 max-width: 680px
 ```
 
-Khối câu hỏi cuối không có `border-bottom`. Không có card border hoặc shadow trên các khối câu hỏi riêng lẻ — chúng chỉ được phân cách bằng divider line.
+The last question block has no `border-bottom`. There is no outer card border or shadow on individual question blocks — they are delimited only by the divider line, keeping the feel of sections on a continuous page.
 
 **Question block anatomy:**
 ```
@@ -925,12 +924,12 @@ Khối câu hỏi cuối không có `border-bottom`. Không có card border ho�
   ├── [Question body]  Noto Serif 18px, glow-700
   ├── [Answer options]  margin-top: 24px
   └── [Block footer]  border-top slate-600, padding-top: 20px
-                       "Đánh dấu xem lại" ghost button (left)
+                       "Mark for review" ghost button (left)
 ```
 
-**Scroll-linked Question Map:** Trong continuous scroll mode, Question Map theo dõi câu hỏi đang hiển thị khi người dùng cuộn bằng `IntersectionObserver`.
+**Scroll-linked Question Map:** In continuous scroll mode, the Question Map tracks the currently visible question as the user scrolls via `IntersectionObserver` with a root margin of `-40% 0px -40% 0px`.
 
-**Anchor navigation:** Click bubble trong Question Map smooth-scroll panel đến khối câu hỏi đó bằng `element.scrollIntoView({ behavior: 'smooth', block: 'start' })` với `scroll-padding-top` offset cho topbar height.
+**Anchor navigation:** Clicking a Question Map bubble smooth-scrolls the panel to that question's block using `element.scrollIntoView({ behavior: 'smooth', block: 'start' })` with a `scroll-padding-top` offset for the topbar.
 
 ```css
 .question-panel {
@@ -938,13 +937,15 @@ Khối câu hỏi cuối không có `border-bottom`. Không có card border ho�
 }
 ```
 
+**No navigation footer** in continuous scroll mode. The only "end of exam" affordance is the Submit Exam button in the Question Map panel.
+
 ---
 
 ### 6.4 Answer Options
 
 #### Multiple Choice (Single Answer)
 
-Mỗi lựa chọn là full-width clickable row với custom radio button, nhãn chữ cái và text đáp án.
+Each option is a full-width clickable row with a custom radio button, letter label, and answer text.
 
 ```
 border: 1.5px solid slate-500
@@ -964,23 +965,23 @@ gap: 12px
 | Wrong (review) | `#4a1a1a` | `#220d0d` | Checked (red dot), text struck through |
 | Unselected correct (review) | `#1a4a1a` | `#0d200d` | Unchecked |
 
-Trong review mode, các lựa chọn sai không được chọn xuất hiện với opacity giảm (`0.5`) để de-emphasize.
+In review mode, incorrect options that were not selected appear at reduced opacity (`0.5`) to de-emphasize them.
 
 #### Multiple Choice (Multiple Answers)
 
-Layout giống single-answer nhưng dùng Checkbox component thay vì Radio. Hướng dẫn nêu rõ "Chọn tất cả đáp án đúng." bằng DM Sans 13px, `glow-400`, italic, ngay trên danh sách lựa chọn.
+Same layout as single-answer but uses the custom Checkbox component instead of Radio. Instructions explicitly state "Select all that apply." in DM Sans 13px, `glow-400`, italic, directly above the options list.
 
 #### Short Answer / Essay
 
-Full-width Textarea với chỉ báo đếm ký tự/từ (DM Sans 12px, `glow-400`) ở dưới-phải. Không thay đổi viền ở trạng thái answered — sự hiện diện của text ngụ ý đã trả lời.
+A full-width Textarea with a character/word count indicator (DM Sans 12px, `glow-400`) positioned below-right. No border changes on answered state — text presence implies an answer.
 
 ---
 
 ### 6.5 Timer
 
-Timer component được hiển thị trong Exam Topbar.
+The timer component is displayed in the Exam Topbar and reflects remaining time.
 
-**Default state (> 5 phút):**
+**Default state (> 5 minutes):**
 ```
 background: slate-700
 border: 1px solid slate-500
@@ -990,7 +991,7 @@ icon: clock, glow-400
 font: system monospace, 14px, font-weight 700, glow-600
 ```
 
-**Warning state (≤ 5 phút):**
+**Warning state (≤ 5 minutes):**
 ```
 background: #221800
 border: #4a3200
@@ -998,7 +999,7 @@ icon: clock, #e8b84b
 font: #f0cc72
 ```
 
-**Critical state (≤ 1 phút):**
+**Critical state (≤ 1 minute):**
 ```
 background: #220d0d
 border: #4a1a1a
@@ -1006,89 +1007,93 @@ icon: clock, #e07272
 font: #ea9090
 ```
 
-Timer chuyển state đúng lúc 5:00 và 1:00. Không có animation khi chuyển state — sự thay đổi màu sắc là thông tin truyền đạt. Định dạng timer là `MM:SS`. Giờ được hiển thị (`HH:MM:SS`) chỉ cho kỳ thi dài hơn 60 phút.
+The timer switches states at exactly 5:00 and 1:00. There is no animation on the state change — the color shift is the communication. The timer format is `MM:SS`. Hours are shown (`HH:MM:SS`) only for exams longer than 60 minutes.
 
 ---
 
 ### 6.6 Result Screen
 
-Hiển thị sau khi bài thi được nộp hoặc sau khi timer hết giờ. Đây là trang focused, căn giữa.
+Shown after an exam is submitted or after the timer expires. It is a focused, centered page.
 
-**Score circle:** Đường tròn 80×80px. Viền: `4px solid` theo màu semantic (success, warning hoặc danger dựa trên ngưỡng điểm). Bên trong: điểm số dưới dạng `font-serif text-3xl font-bold` bằng màu text semantic tương ứng. Background của vòng tròn là semantic background tint.
+**Score circle:** 80×80px circle. Border: `4px solid` in semantic base color (success, warning, or danger based on score threshold). Inside: the score as `font-serif text-3xl font-bold` in the matching semantic text color. Circle background uses the semantic background tint.
 
 **Score thresholds:**
-- ≥ 8.0 → Success (xanh lá)
-- 5.0–7.9 → Warning (vàng)
-- < 5.0 → Danger (đỏ)
+- ≥ 8.0 → Success (green)
+- 5.0–7.9 → Warning (amber)
+- < 5.0 → Danger (red)
 
-**Stat row:** Ba ô bằng nhau — Đúng, Sai, Bỏ qua. Mỗi ô hiển thị số lớn (Noto Serif 28px, `glow-700`) với label (12px, `glow-300`).
+**Stat row:** Three equal-width cells — Correct, Incorrect, Skipped. Each shows a large number (Noto Serif 28px, `glow-700`) with a label (12px, `glow-300`).
 
-**Progress bar:** Full-width, hiển thị phần trăm điểm với fill color semantic.
+**Progress bar:** Full-width, shows score percentage with semantic fill color.
 
-**Actions:** Hai button — "Xem lại đáp án" (Secondary) và "Về trang chủ" (Primary).
+**Actions:** Two buttons — "Review Answers" (Secondary) and "Back to Dashboard" (Primary).
 
 ---
 
 ### 6.7 Review Mode
 
-Sau khi nộp bài, học sinh (và giáo viên) có thể review kỳ thi với các trạng thái đúng/sai được hiển thị.
+After submission, students (and teachers) can review the exam with correct/incorrect states revealed.
 
-**Correct answer (học sinh chọn đúng):**
-- Viền xanh lá + nền xanh lá tối trên lựa chọn (`border: #1a4a1a`, `background: #0d200d`)
-- Icon checkmark bên phải (`#6ec46e`)
-- Text đáp án: `#6ec46e`, font-weight: 500
+**Correct answer (student chose correctly):**
+- Green border + dark green background on the option (`border: #1a4a1a`, `background: #0d200d`)
+- Checkmark icon on the right (`#6ec46e`)
+- Answer text: `#6ec46e`, font-weight: 500
 
-**Wrong answer (học sinh chọn sai):**
-- Viền đỏ + nền đỏ tối trên lựa chọn (`border: #4a1a1a`, `background: #220d0d`)
-- Icon X bên phải (`#e07272`)
-- Text đáp án: `#e07272`, `text-decoration: line-through`
+**Wrong answer (student chose incorrectly):**
+- Red border + dark red background on the option (`border: #4a1a1a`, `background: #220d0d`)
+- X icon on the right (`#e07272`)
+- Answer text: `#e07272`, `text-decoration: line-through`
 
-**Correct answer (học sinh không chọn):**
-- Viền xanh lá + nền xanh lá tối
-- Không có icon (để phân biệt với học sinh-chọn-đúng)
+**Correct answer (student did not choose it):**
+- Green border + dark green background
+- No icon (to distinguish from student-selected-correct)
 
-**Explanation callout:** Bên dưới answer options, một `Info` callout hiển thị giải thích. Label: "Giải thích" trong `glow-500 font-semibold`. Body: DM Sans 14px, `glow-400`.
+**Explanation callout:** Below the answer options, an `Info` callout displays the explanation. Label: "Explanation" in `glow-500 font-semibold`. Body: DM Sans 14px, `glow-400`.
 
 ---
 
 ### 6.8 Display Mode: Paged vs Continuous Scroll
 
-Phần này tổng hợp tất cả sự khác biệt về hành vi giữa hai display mode để tham khảo khi implement.
+This section consolidates all behavioral differences between the two display modes for reference during implementation.
 
 #### Mode Selection
 
-Giáo viên chọn display mode trong exam creation settings. Mặc định là **Continuous Scroll**.
+The teacher selects the display mode in the exam creation settings. The default is **Continuous Scroll**.
 
 ```
 [Exam Settings — Display Mode]
-  ● Cuộn liên tục (mặc định)
-    "Tất cả câu hỏi trên một trang. Học sinh cuộn tự do."
-  ○ Phân trang
-    "Một câu hỏi mỗi màn hình. Học sinh điều hướng bằng Trước / Tiếp theo."
+  ● Continuous Scroll (default)
+    "All questions on one page. Students scroll freely."
+  ○ Paged
+    "One question per screen. Students navigate with Prev / Next."
 ```
+
+The mode is stored on the exam object and is read-only for students during the session.
 
 #### Behavioral Comparison
 
 | Behavior | Paged | Continuous Scroll |
 |---|---|---|
-| Câu hỏi được render | Từng câu một | Tất cả cùng lúc |
-| Điều hướng | ← Trước / Tiếp theo → | Cuộn + jump-link Question Map |
-| Theo dõi "Current" trong Question Map | Set rõ ràng bằng navigation | Set bằng scroll position (IntersectionObserver) |
-| Navigation footer | Có | Không |
-| Học sinh xem trước câu hỏi tương lai | Không | Có |
-| Scroll khi nhảy Map | Trang thay thế câu hỏi hiện tại | Smooth scroll đến anchor |
-| Auto-save câu trả lời | Khi click lựa chọn | Khi click lựa chọn (giống) |
-| Cập nhật progress bar | Khi điều hướng đến câu đã trả lời | Ngay khi click lựa chọn |
-| Bước tóm tắt trước nộp bài | Có (sau Next → cuối cùng) | Không — nộp trực tiếp từ Map panel |
-| Browser back-button | Quay lại câu hỏi trước | Thoát kỳ thi (cảnh báo người dùng) |
+| Questions rendered | One at a time | All at once |
+| Navigation | ← Prev / Next → buttons | Scroll + Question Map anchor jump |
+| Question Map "Current" tracking | Set explicitly by navigation | Set by scroll position (IntersectionObserver) |
+| Navigation footer | Present | Absent |
+| Student can see future questions | No (unless navigating forward) | Yes |
+| Scroll position on Map jump | Page replaces current question | Smooth scroll to anchor |
+| Answer auto-save trigger | On any option click | On any option click (identical) |
+| Progress bar update | On navigation to answered question | Immediately on option click |
+| "Finish" / summary step before submit | Yes (after last Next →) | No — submit directly from Map panel |
+| Back-button browser behavior | Returns to previous question | Exits exam (warn user) |
+| Keyboard shortcut: Enter / Space | Selects focused option | Selects focused option (identical) |
+| Keyboard shortcut: → / ↓ | Next question (Paged only) | Scroll down (browser default) |
 
 #### Question Divider in Continuous Scroll
 
-Mỗi khối câu hỏi được ngăn cách bằng rule `border-bottom: 1px solid slate-600`. Nhãn số câu hỏi nổi nhẹ ở left margin của mỗi khối dùng `position: relative` + pseudo-element `::before`, styled theo Label (`glow-300`, 11px, uppercase) để hoạt động như margin note anchor.
+Each question block is separated by a `border-bottom: 1px solid slate-600` rule. A subtle question number label floats in the left margin of each block using `position: relative` + a `::before` pseudo-element, styled as Label (`glow-300`, 11px, uppercase).
 
 ```css
 .question-block::before {
-  content: 'C' attr(data-question-number);
+  content: 'Q' attr(data-question-number);
   position: absolute;
   left: -48px;
   top: 28px;
@@ -1100,64 +1105,68 @@ Mỗi khối câu hỏi được ngăn cách bằng rule `border-bottom: 1px sol
 }
 ```
 
+This requires the question panel to have `position: relative` and `padding-left: 72px` when margin notes are enabled (desktop only, never on mobile).
+
 #### Summary Screen (Paged Mode Only)
 
-Trong Paged mode, click "Kết thúc" ở câu hỏi cuối điều hướng đến summary screen trước khi nộp:
+In Paged mode, clicking "Finish" on the last question navigates to a summary screen before submission:
 
 ```
 [Summary screen]
-  ├── Title: "Xem lại trước khi nộp"
-  ├── Subtitle: "X trong Y câu đã trả lời."
+  ├── Title: "Review Before Submitting"
+  ├── Subtitle: "X of Y questions answered."
   ├── [Summary table]
-  │     Columns: Câu | Trạng thái | Nhảy đến
-  │     Rows: mỗi câu một hàng
-  │       Status: "Đã trả lời" (success), "Chưa trả lời" (glow-400), "Đã đánh dấu" (warning)
-  │       Nhảy: text link → quay lại câu đó trong paged view
+  │     Columns: Q# | Status | Jump
+  │     Rows: one per question
+  │       Status: "Answered" (success), "Unanswered" (glow-400), "Flagged" (warning)
+  │       Jump: text link → returns to that question in paged view
   └── [Footer]
-        [Quay lại] (Secondary)    [Nộp bài] (Danger)
+        [Back to Exam] (Secondary)    [Submit Exam] (Danger)
 ```
+
+In Continuous Scroll mode, no summary screen exists. The Submit confirmation modal (see §6.2) still lists the number of unanswered questions before final submission.
 
 ---
 
 ## 7. Mobile Design System
 
-Mobile là context first-class trong Exama. Học sinh thường truy cập kỳ thi trên điện thoại, đặc biệt trong bối cảnh lớp học không có laptop. Giáo viên dùng mobile để theo dõi phiên thi trực tiếp và kiểm tra kết quả khi di chuyển.
+Mobile is a first-class context in Exama. Students frequently access exams on phones, especially in classroom settings where laptops are unavailable. Teachers use mobile to monitor live exam sessions and check results on the go. Every component and pattern defined in the desktop system has a corresponding mobile behavior specified here.
 
 ### 7.1 Breakpoints & Responsive Strategy
 
-Exama dùng bốn breakpoint:
+Exama uses four breakpoints derived from common device categories:
 
 | Breakpoint | Range | Context |
 |---|---|---|
-| `xs` | 0 – 479px | Điện thoại nhỏ (iPhone SE, Android cũ) |
-| `sm` | 480 – 767px | Điện thoại lớn, phablet hẹp |
-| `md` | 768 – 1023px | Tablet, phablet lớn (portrait) |
-| `lg` | 1024 – 1279px | Tablet (landscape), laptop nhỏ |
+| `xs` | 0 – 479px | Small phones (iPhone SE, older Android) |
+| `sm` | 480 – 767px | Large phones, narrow phablets |
+| `md` | 768 – 1023px | Tablets, large phablets (portrait) |
+| `lg` | 1024 – 1279px | Tablets (landscape), small laptops |
 | `xl` | 1280px+ | Desktop, full layout |
 
-**Mobile** chỉ `xs` và `sm`. **Tablet** chỉ `md`. **Desktop** chỉ `lg` và `xl`.
+**Mobile** refers to `xs` and `sm`. **Tablet** refers to `md`. **Desktop** refers to `lg` and `xl`.
 
 #### Strategy: Mobile-First
 
-Tất cả base styles nhắm đến mobile. Desktop styles được thêm bằng media query `min-width`. Điều này đảm bảo bundle cơ sở không bao giờ tải CSS desktop-only không dùng trên mobile.
+All base styles target mobile. Desktop styles are added via `min-width` media queries. This ensures the base bundle is never loaded with unused desktop-only CSS on mobile.
 
 #### Layout Shifts by Breakpoint
 
 | Feature | Mobile (xs/sm) | Tablet (md) | Desktop (lg+) |
 |---|---|---|---|
-| Sidebar | Ẩn → Bottom tab bar | Collapsible icon-rail (48px) | Fixed sidebar (220px) |
+| Sidebar | Hidden → Bottom tab bar | Collapsible icon-rail (48px) | Fixed sidebar (220px) |
 | Exam Question Map | Expandable top drawer | Collapsible left panel (180px) | Fixed left panel (220px) |
 | Exam layout | Single column, full-width | Two column (map 180px + content) | Two column (map 220px + content) |
-| Cards | Full-width, không margin ngang | 2-column grid | 3-column grid |
-| Tables | Thay bằng list-card view | Horizontal scroll hoặc list-card | Full table |
+| Cards | Full-width, no horizontal margin | 2-column grid | 3-column grid |
+| Tables | Replaced by list-card view | Horizontal scroll or list-card | Full table |
 | Modals | Bottom sheet (full width, partial height) | Centered dialog | Centered dialog |
-| Pagination | Prev / Next only, không page numbers | Condensed (3 trang + ellipsis) | Full |
+| Pagination | Prev / Next only, no page numbers | Condensed (3 pages + ellipsis) | Full |
 
 ---
 
 ### 7.2 Mobile Typography
 
-Tất cả type sizes giảm vừa phải trên mobile. Line-height tăng nhẹ cho context đọc trên màn hình cảm ứng.
+All type sizes scale down modestly on mobile. Line heights are slightly increased for touch-screen reading contexts.
 
 | Style | Desktop | Mobile (xs/sm) | Change |
 |---|---|---|---|
@@ -1166,11 +1175,13 @@ Tất cả type sizes giảm vừa phải trên mobile. Line-height tăng nhẹ 
 | H2 | 24px / lh 1.3 | 20px / lh 1.35 | −4px |
 | H3 | 20px / lh 1.4 | 18px / lh 1.4 | −2px |
 | H4 | 16px / lh 1.4 | 15px / lh 1.45 | −1px |
-| Body Large | 16px / lh 1.6 | 16px / lh 1.65 | không đổi |
-| Body | 14px / lh 1.6 | 14px / lh 1.65 | không đổi |
-| Body Small | 13px / lh 1.5 | 13px / lh 1.55 | không đổi |
-| Label | 11px, uppercase | 11px, uppercase | không đổi |
+| Body Large | 16px / lh 1.6 | 16px / lh 1.65 | unchanged |
+| Body | 14px / lh 1.6 | 14px / lh 1.65 | unchanged |
+| Body Small | 13px / lh 1.5 | 13px / lh 1.55 | unchanged |
+| Label | 11px, uppercase | 11px, uppercase | unchanged |
 | **Question body** | **18px / lh 1.7** | **16px / lh 1.75** | −2px |
+
+Question body is reduced by 2px on mobile to allow full question text to appear without excessive scrolling, while line-height increases to compensate for reading density.
 
 ---
 
@@ -1178,10 +1189,10 @@ Tất cả type sizes giảm vừa phải trên mobile. Line-height tăng nhẹ 
 
 #### Touch Target Minimum
 
-Tất cả element tương tác phải đáp ứng **touch target tối thiểu 44×44px** (Apple HIG) bất kể kích thước visual của chúng. Element visual nhỏ được bao quanh bởi padding vô hình để đạt mức tối thiểu này.
+All interactive elements must meet a **minimum touch target of 44×44px** (Apple HIG) regardless of their visual size. Small visual elements are surrounded by invisible padding to reach this minimum.
 
 ```css
-/* Example: icon button visual 32px, touch target 44px */
+/* Example: small icon button visual 32px, touch target 44px */
 .icon-button-sm {
   width: 32px;
   height: 32px;
@@ -1190,13 +1201,13 @@ Tất cả element tương tác phải đáp ứng **touch target tối thiểu 
 .icon-button-sm::before {
   content: '';
   position: absolute;
-  inset: -6px;   /* mở rộng vùng click lên 44px */
+  inset: -6px;   /* expands clickable area to 44px */
 }
 ```
 
 #### Mobile Spacing Adjustments
 
-Trên mobile, `p-6` chuẩn (24px) card padding giảm xuống `p-4` (16px). Section gap giảm từ `space-8` (32px) xuống `space-6` (24px). Page horizontal padding giảm từ `px-6` (24px) xuống `px-4` (16px).
+On mobile, standard `p-6` (24px) card padding reduces to `p-4` (16px). Section gaps reduce from `space-8` (32px) to `space-6` (24px). Page horizontal padding reduces from `px-6` (24px) to `px-4` (16px).
 
 | Token | Desktop | Mobile |
 |---|---|---|
@@ -1211,24 +1222,24 @@ Trên mobile, `p-6` chuẩn (24px) card padding giảm xuống `p-4` (16px). Sec
 
 ### 7.4 Mobile Navigation — Bottom Tab Bar
 
-Trên mobile, teacher dashboard dùng **bottom tab bar** thay vì desktop sidebar.
+On mobile, the teacher dashboard uses a **bottom tab bar** instead of the desktop sidebar. The bottom tab bar is universally understood on mobile and keeps thumb-reachable navigation within the natural zone of one-handed phone use.
 
 ```
 position: fixed
 bottom: 0
 left: 0
 right: 0
-height: 56px (+ safe-area-inset-bottom cho notch/home indicator)
+height: 56px (+ safe-area-inset-bottom for notch/home indicator)
 background: slate-800
 border-top: 1px solid slate-600
 display: flex
 z-index: 50
 ```
 
-**Tab items:** Cột bằng nhau (thường 4–5 tab). Mỗi tab chứa:
-- Icon (20px, căn giữa ngang)
-- Label (DM Sans 10px, căn giữa, `letter-spacing: 0.03em`)
-- `gap: 3px` giữa icon và label
+**Tab items:** Equal-width columns (typically 4–5 tabs). Each tab contains:
+- Icon (20px, centered horizontally)
+- Label (DM Sans 10px, centered, `letter-spacing: 0.03em`)
+- `gap: 3px` between icon and label
 
 ```
 [Tab item]
@@ -1240,29 +1251,29 @@ z-index: 50
         Active:  accent-400, font-weight: 600
 ```
 
-Tab active: Icon và label đều trong tone accent. Không có background pill hoặc underline — màu sắc là đủ.
+Active tab: Icon and label both in `accent` tones. No background pill or underline — color is sufficient.
 
-**Tab items cho teacher role:**
+**Tab items for teacher role:**
 
 | Tab | Icon | Label |
 |---|---|---|
-| Home | house | Tổng quan |
-| Exams | document-text | Kỳ thi |
-| Students | users | Học sinh |
-| Results | chart-bar | Kết quả |
-| More | ellipsis-horizontal | Thêm |
+| Home | house | Overview |
+| Exams | document-text | Exams |
+| Students | users | Students |
+| Results | chart-bar | Results |
+| More | ellipsis-horizontal | More |
 
-Tab "Thêm" mở **bottom sheet** liệt kê các item ít truy cập (Cài đặt, Hồ sơ, Trợ giúp, Đăng xuất).
+The "More" tab opens a **bottom sheet** listing infrequently accessed items (Settings, Profile, Help, Logout).
 
-**Page content** phải tính cho bottom tab bar. Thêm `padding-bottom: calc(56px + env(safe-area-inset-bottom))` cho tất cả page content container.
+**Page content** must account for the bottom tab bar. Add `padding-bottom: calc(56px + env(safe-area-inset-bottom))` to all page content containers.
 
 ---
 
 ### 7.5 Mobile Navigation — Hamburger Drawer
 
-Trên tablet (`md`), sidebar icon-rail thu gọn (48px wide, chỉ icon) được dùng. Tap icon mở rộng full sidebar overlay (220px) trượt vào từ trái.
+On tablet (`md`), a collapsed icon-rail sidebar (48px wide, icons only) is used. Tapping an icon expands a full sidebar overlay (220px) that slides in from the left.
 
-Trên mobile, **hamburger menu** (`☰`) trong top-left của mobile topbar mở cùng full-width drawer để truy cập deep link (Cài đặt, Hồ sơ, v.v.) không thể đến qua bottom tab bar.
+On mobile, a **hamburger menu** (`☰`) in the top-left of the mobile topbar opens the same full-width drawer for accessing deep links (Settings, Profile, etc.) not reachable via the bottom tab bar.
 
 **Mobile Topbar (Dashboard):**
 ```
@@ -1273,7 +1284,7 @@ padding: 0 16px
 display: flex, align-items: center, justify-content: space-between
 
 Left:  [☰ icon button, 44×44px touch target] + [Product name, Noto Serif 18px, glow-700]
-Right: [Avatar, 32px circle] (tap để vào Profile)
+Right: [Avatar, 32px circle] (taps to Profile)
 ```
 
 **Drawer:**
@@ -1290,7 +1301,7 @@ transform: translateX(0)       /* open */
 transition: transform 200ms ease-out
 ```
 
-**Overlay phía sau drawer:** `background: rgba(0,0,0,0.60)`, tap để đóng drawer.
+**Overlay behind drawer:** `background: rgba(0,0,0,0.60)`, tapping it closes the drawer.
 
 ---
 
@@ -1298,72 +1309,72 @@ transition: transform 200ms ease-out
 
 #### Exam Cards
 
-Trên mobile, exam card **full-width** (không grid). Stack dọc với `gap: 12px`. Page container horizontal padding (`px-4`) tạo không gian thở.
+On mobile, exam cards are **full-width** (no grid). They stack vertically with a `gap: 12px` between cards. Horizontal padding from the page container (`px-4`) creates visual breathing room.
 
-Card internal layout chuyển từ multi-column header phức tạp sang linear stack đơn giản:
+Card internal layout changes from a complex multi-column header to a simplified linear stack:
 
 ```
 [Card]  background: slate-800
   ├── [Top row] Subject tag (left) + Status badge (right)
   ├── [Title] H3 (18px, Noto Serif, glow-700)
-  ├── [Subtitle] Tên lớp · Số học sinh (13px, glow-400)
-  └── [Footer row] Số câu · Thời gian (left) + Số đã nộp (right)
+  ├── [Subtitle] Class name · Student count (13px, glow-400)
+  └── [Footer row] Question count · Duration (left) + Submitted count (right)
 ```
 
-Min-height: `80px`. Card không hiển thị hover state trên mobile. Thay vào đó, toàn bộ card có `active:` state — `background: slate-700` — để cung cấp press feedback.
+Min-height: `80px`. Cards do not display hover states on mobile (no hover concept). Instead, the entire card has an `active:` state — `background: slate-700` — to provide press feedback.
 
 #### Stat Cards
 
-Trên mobile, stat card sắp xếp trong **2-column grid** với padding giảm (`p-4`). Kích thước số lớn giảm từ `text-4xl` (36px) xuống `text-3xl` (30px).
+On mobile, stat cards arrange in a **2-column grid** with reduced padding (`p-4`). The large number size reduces from `text-4xl` (36px) to `text-3xl` (30px).
 
 ---
 
 ### 7.7 Mobile Forms
 
-Form layout luôn là **single-column** trên mobile. Multi-column form layouts từ desktop thu gọn thành sequential stacked fields.
+Form layout is always **single-column** on mobile. Multi-column form layouts from desktop collapse to sequential stacked fields.
 
-**Input fields:** Chiều cao tăng lên 44px tối thiểu (từ 38px trên desktop). Padding điều chỉnh phù hợp: `padding: 10px 13px`.
+**Input fields:** Height increases to 44px minimum (from 38px on desktop) to meet touch target requirements. Padding adjusts accordingly: `padding: 10px 13px`.
 
-**Keyboard-aware layout:** Các trang chứa form phải được wrap trong scroll container vẫn dùng được khi virtual keyboard xuất hiện. Input đang focused phải được scroll vào view và không bị keyboard che. Dùng `scroll-padding-bottom: 16px` trên scroll container.
+**Keyboard-aware layout:** Pages containing forms must be wrapped in a scroll container that remains usable when the virtual keyboard appears. The focused input must be scrolled into view and not obscured by the keyboard. Use `scroll-padding-bottom: 16px` on the scroll container.
 
-**Select trên mobile:** Native `<select>` được ưu tiên trên mobile vì dùng native picker của nền tảng, được tối ưu cho ngón cái và accessible. Custom select dropdown chỉ dùng khi cần lọc hoặc search trong danh sách (> 10 lựa chọn).
+**Select on mobile:** The native `<select>` element is preferred on mobile because it uses the platform's native picker, which is thumb-optimized and accessible. Custom select dropdowns should only be used if filtering or search within the list is needed (> 10 options).
 
-**Date/time pickers:** Luôn dùng native `<input type="date">` và `<input type="time">` trên mobile để tận dụng native date picker UI của nền tảng.
+**Date/time pickers:** Always use native `<input type="date">` and `<input type="time">` on mobile to leverage the platform's native date picker UI.
 
 ---
 
 ### 7.8 Mobile Tables → List View
 
-Full table (nhiều cột) không dùng được trên màn hình nhỏ. Trên mobile (`xs`/`sm`), tất cả table được thay bằng **list-card view**.
+Full tables (with multiple columns) are not usable on small screens. On mobile (`xs`/`sm`), all table instances are replaced by **list-card views**.
 
-Mỗi table row trở thành một card:
+Each table row becomes a card:
 
 ```
 [Row Card]  padding: 14px 16px, border-bottom: 1px solid slate-700
             background: slate-800
   ├── [Top row]
-  │     ├── [Left] Identity (avatar + tên, font-weight: 500, glow-600)
-  │     └── [Right] Primary value (điểm, status badge)
+  │     ├── [Left] Identity (avatar + name, font-weight: 500, glow-600)
+  │     └── [Right] Primary value (score, status badge)
   └── [Bottom row]  margin-top: 6px
-        ├── [Left] Secondary info (lớp, ngày) — 13px, glow-400
+        ├── [Left] Secondary info (class, date) — 13px, glow-400
         └── [Right] Action link — accent-400, 13px
 ```
 
-List-card view không hiển thị table header. Thay vào đó, **sort/filter bar** (hàng ngang cuộn được của compact filter chip) nằm phía trên list.
+The list-card view does not show table headers. Instead, a **sort/filter bar** (single horizontal scrollable row of compact filter chips) sits above the list.
 
-Trên tablet (`md`), full table được phép nếu column count ≤ 4. Table rộng hơn nên scroll ngang trong container với `-webkit-overflow-scrolling: touch`.
+On tablet (`md`), full tables are permitted if the column count is ≤ 4. Wider tables should scroll horizontally within a container with `-webkit-overflow-scrolling: touch`.
 
 ---
 
 ### 7.9 Mobile Modals → Bottom Sheet
 
-Trên mobile, tất cả modal chuyển thành **bottom sheet** — panel trượt lên từ đáy màn hình.
+On mobile, all modals transform into **bottom sheets** — panels that slide up from the bottom of the screen. This is more ergonomic on touch screens and avoids the cramped experience of a centered modal on a narrow viewport.
 
 ```
 position: fixed
 bottom: 0, left: 0, right: 0
 background: slate-800
-border-radius: 12px 12px 0 0
+border-radius: 12px 12px 0 0     /* rounded top corners only */
 border-top: 1px solid slate-600
 padding: 20px 16px
 padding-bottom: calc(20px + env(safe-area-inset-bottom))
@@ -1373,17 +1384,17 @@ max-height: 90vh
 overflow-y: auto
 ```
 
-**Drag handle:** Pill 36×4px, `background: slate-600`, `border-radius: 2px`, căn giữa ngang ở đầu sheet với margin 12px bên dưới.
+**Drag handle:** A 36×4px pill, `background: slate-600`, `border-radius: 2px`, centered horizontally at the top of the sheet with 12px margin below it. It serves as a visual affordance that the sheet can be dragged down to dismiss.
 
-**Overlay:** `rgba(0,0,0,0.60)`. Tap overlay để dismiss bottom sheet.
+**Overlay:** `rgba(0,0,0,0.60)`. Tapping the overlay dismisses the bottom sheet.
 
-**Confirmation bottom sheet** (e.g., nộp bài, xóa kỳ thi) giới hạn `max-height: 50vh` và chỉ chứa title, mô tả ngắn và hai action button xếp dọc (Danger/Destructive ở trên, Secondary cancel ở dưới).
+**Confirmation bottom sheets** (e.g., submit exam, delete exam) are limited to `max-height: 50vh` and contain only the title, a short description, and two action buttons stacked vertically (Danger/Destructive on top, Secondary cancel below).
 
 ---
 
 ### 7.10 Mobile Exam UI — Topbar
 
-Trên mobile, exam topbar thích nghi để vừa với thông tin quan trọng trong 48px height.
+On mobile, the exam topbar adapts to fit critical information in 48px height.
 
 ```
 height: 48px
@@ -1394,16 +1405,16 @@ position: sticky, top: 0, z-index: 40
 ```
 
 ```
-[Left]   [☰ Map icon] (44×44px, mở Question Map Drawer)
-[Center] Tên kỳ thi (DM Sans 14px, glow-500, truncated)
+[Left]   [☰ Map icon] (44×44px, opens Question Map Drawer)
+[Center] Exam name (DM Sans 14px, glow-500, truncated with ellipsis)
 [Right]  Timer component (compact)
 ```
 
-Map icon là affordance chính để mở Question Map drawer. Touch target 44×44px. Badge hiển thị số câu chưa trả lời xuất hiện phía trên khi còn câu chưa trả lời.
+The Map icon is the primary affordance for opening the Question Map drawer. Its touch target is 44×44px. A badge showing the count of unanswered questions appears over it when any questions remain unanswered.
 
 **Badge on map icon:**
 ```
-position: absolute, top-right của icon
+position: absolute, top-right of icon
 background: #e8b84b
 color: slate-900
 font: DM Sans 10px, font-weight: 700
@@ -1412,31 +1423,31 @@ min-width: 16px, height: 16px
 padding: 0 4px
 ```
 
-Progress bar (thanh 4px mỏng hiển thị answered/total) nằm ở cạnh dưới cùng của topbar — full width, `slate-600` track, `accent-500` fill.
+Progress bar (the thin 4px strip showing answered/total) sits at the very bottom edge of the topbar — full width, `slate-600` track, `accent-500` fill.
 
 ---
 
 ### 7.11 Mobile Exam UI — Question Map Drawer
 
-Trên mobile, Question Map không phải panel cố định. Nó là **collapsible top drawer** được kích hoạt bằng tap Map icon trong topbar.
+On mobile, the Question Map is not a persistent panel. It is a **collapsible top drawer** triggered by tapping the Map icon in the topbar.
 
-**Closed state:** Drawer ẩn hoàn toàn. Progress bar trong topbar truyền đạt tiến trình tổng thể thụ động.
+**Closed state:** The drawer is fully hidden. The progress bar in the topbar communicates overall progress passively.
 
-**Open state:** Drawer trượt xuống từ bên dưới topbar, overlay lên nội dung câu hỏi.
+**Open state:** The drawer slides down from beneath the topbar, overlaying the question content.
 
 ```
 position: fixed
-top: 48px   /* ngay dưới topbar */
+top: 48px   /* directly below topbar */
 left: 0, right: 0
 background: slate-800
 border-bottom: 1px solid slate-600
 box-shadow: shadow-dark-md
 padding: 16px
-z-index: 39
+z-index: 39   /* below topbar, above question content */
 max-height: calc(60vh)
 overflow-y: auto
 
-open:  transform: translateY(0),   opacity: 1
+open:   transform: translateY(0),   opacity: 1
 closed: transform: translateY(-8px), opacity: 0
 transition: 200ms ease-out
 ```
@@ -1451,44 +1462,44 @@ transition: 200ms ease-out
 [Bubble grid]
   └── grid-template-columns: repeat(auto-fill, minmax(40px, 1fr))
       gap: 8px
-      Bubble size: 40×40px (lớn hơn desktop cho touch)
-      Màu trạng thái giống desktop
+      Bubble size: 40×40px (larger than desktop for touch)
+      Same state colors as desktop
 
 [Legend row]
   └── Horizontal flex, gap: 16px (compact horizontal legend)
-      Mỗi item: swatch 10×10px + label 12px
+      Each: 10×10px swatch + 12px label
 
 [Submit button]
   └── Full-width, Danger variant, margin-top: 16px
 ```
 
-Bubble grid dùng `repeat(auto-fill, minmax(40px, 1fr))` — số cột tự động từ độ rộng drawer sau khi trừ horizontal padding. Trên điện thoại 360px với padding 16px mỗi bên (328px usable), cho ~7 cột; trên 430px (~398px usable) cho ~9 cột. Bubble size **40×40px** trên mobile (vs 32×32px trên desktop) để đáp ứng touch target minimum.
+The bubble grid uses `repeat(auto-fill, minmax(40px, 1fr))` — column count is derived automatically from the available drawer width after horizontal padding is subtracted. On a 360px phone with `16px` padding on each side (328px usable), this yields ~7 columns; on a 430px phone (~398px usable) ~9 columns. Bubble size is **40×40px** on mobile (vs 32×32px on desktop) to meet touch target minimums.
 
-Tap bất kỳ bubble nào sẽ đóng drawer và scroll đến câu hỏi đó.
+Tapping any bubble closes the drawer and scrolls to that question.
 
-**Overlay:** `rgba(0,0,0,0.40)` (nhạt hơn modal overlay) phía sau drawer. Tap overlay để đóng drawer.
+**Overlay:** `rgba(0,0,0,0.40)` (lighter than modal overlay) behind the drawer. Tapping the overlay closes the drawer.
 
 ---
 
 ### 7.12 Mobile Exam UI — Question Panel
 
-Trên mobile, Question Panel full-width và scrollable. Không có persistent sidebar.
+On mobile, the Question Panel is full-width and scrollable. There is no persistent sidebar.
 
 ```
 padding: 16px
-padding-bottom: 80px   /* space cho fixed navigation footer */
+padding-bottom: 80px   /* space for fixed navigation footer */
 background: slate-900
 ```
 
-**Question header:** Number badge (24×24px, `background: accent-500`, `glow-700`) + nhãn "C X / Y", hàng ngang.
+**Question header:** Number badge (24×24px, `background: accent-500`, `glow-700`) + "Q X / Y" label, horizontal row.
 
-**Flag button:** Đặt inline trong header row, right-aligned. Touch target 44×44px.
+**Flag button:** Placed inline in the header row, right-aligned. 44×44px touch target.
 
-**Question body:** Noto Serif 16px, `glow-700`, `line-height: 1.75`.
+**Question body:** Noto Serif 16px, `glow-700`, `line-height: 1.75`. Slightly smaller than desktop (18px) to avoid excessive line wrapping on narrow screens.
 
-**Answer options:** Full-width. Padding tăng lên `14px 16px` cho touch thoải mái. Gap giữa lựa chọn: `10px`.
+**Answer options:** Full-width. Padding increases to `14px 16px` for comfortable touch. Gap between options: `10px`.
 
-**Fixed navigation footer:** Điều hướng Trước/Tiếp theo được **ghim xuống đáy** màn hình.
+**Fixed navigation footer:** The Previous/Next navigation is **fixed to the bottom** of the screen, above any safe-area inset.
 
 ```
 position: fixed
@@ -1503,24 +1514,27 @@ z-index: 30
 ```
 
 ```
-[← Trước]    flex: 1, Secondary button, height: 40px
-[Tiếp theo →] flex: 1, Primary button, height: 40px
+[← Prev]  flex: 1, Secondary button, height: 40px
+[Next →]  flex: 1, Primary button, height: 40px
 ```
+
+Question content has `padding-bottom: 80px` to ensure the last answer option is not obscured by this fixed footer.
 
 ---
 
 ### 7.13 Mobile Exam UI — Continuous Scroll Mode
 
-Continuous Scroll là mode mặc định và hoạt động đặc biệt tốt trên mobile. Layout tuyến tính, top-to-bottom khớp với gesture tự nhiên của cuộn màn hình điện thoại.
+Continuous Scroll is the default mode and works particularly well on mobile. The linear, top-to-bottom layout matches the natural gesture of scrolling a phone screen and eliminates the need to repeatedly tap navigation buttons.
 
-**Layout:** Question panel là single tall scroll container. Không có fixed navigation footer. Các element cố định duy nhất là topbar (trên) và safe-area-aware padding ở đáy.
+**Layout:** The question panel is a single tall scroll container. No fixed navigation footer is rendered. The only fixed elements are the topbar (top) and the safe-area-aware padding at the bottom.
 
 ```
 padding: 16px
 padding-bottom: calc(32px + env(safe-area-inset-bottom))
+/* no fixed footer — extra bottom padding replaces it */
 ```
 
-**Question blocks trên mobile:**
+**Question blocks on mobile:**
 
 ```
 padding-bottom: 24px
@@ -1528,11 +1542,11 @@ border-bottom: 1px solid slate-600
 margin-bottom: 24px
 ```
 
-Không có left-margin question number pseudo-element trên mobile (không đủ không gian ngang). Number badge bên trong block header là identifier câu hỏi duy nhất.
+No left-margin question number pseudo-element on mobile (insufficient horizontal space). The number badge inside each block header serves as the sole question identifier.
 
-**Scroll-linked Question Map:** Logic `IntersectionObserver` tương tự áp dụng trên mobile. Khi học sinh cuộn, active bubble trong Question Map drawer cập nhật. Khi drawer mở giữa scroll, active bubble được hiển thị ngay lập tức.
+**Scroll-linked Question Map:** The same `IntersectionObserver` logic applies on mobile. As the student scrolls, the active bubble in the Question Map drawer updates. When the drawer is opened mid-scroll, the active bubble is immediately visible.
 
-**Anchor jump:** Tap bubble trong Question Map drawer đóng drawer, sau đó smooth-scroll question panel đến khối target. Giá trị `scroll-padding-top` trên mobile phải tính cho topbar height (`48px`):
+**Anchor jump behavior:** Tapping a bubble in the Question Map drawer closes the drawer, then smooth-scrolls the question panel to the target block. The `scroll-padding-top` value on mobile must account for the topbar height (`48px`):
 
 ```css
 .question-panel-mobile {
@@ -1540,7 +1554,7 @@ Không có left-margin question number pseudo-element trên mobile (không đủ
 }
 ```
 
-**"Back to top" affordance:** Trong continuous scroll mode trên mobile, một khi học sinh đã cuộn qua câu 5, nút Ghost nhỏ "↑ Đầu trang" xuất hiện ghim ở `bottom: calc(16px + env(safe-area-inset-bottom))`, `right: 16px`. Nút này smooth-scroll về câu 1. Không xuất hiện trong Paged mode.
+**"Back to top" affordance:** In continuous scroll mode on mobile, once the student has scrolled past question 5, a small "↑ Top" Ghost button appears pinned at `bottom: calc(16px + env(safe-area-inset-bottom))`, `right: 16px`. It smooth-scrolls back to question 1. This button does not appear in Paged mode.
 
 ```
 position: fixed
@@ -1555,13 +1569,13 @@ box-shadow: shadow-dark-md
 z-index: 20
 ```
 
-**Paged mode trên mobile:** Khi giáo viên đã chọn Paged mode, mobile question panel hành xử giống spec §7.12 — một câu hỏi mỗi màn hình, fixed navigation footer ở đáy.
+**Paged mode on mobile:** When the teacher has selected Paged mode, the mobile question panel behaves identically to the existing §7.12 spec — one question per screen, fixed navigation footer at the bottom.
 
 ---
 
 ### 7.14 Mobile Exam UI — Result Screen
 
-Result screen trên mobile là single full-page scroll. Các element xếp dọc.
+The result screen on mobile is a single full-page scroll. Elements stack vertically.
 
 ```
 padding: 24px 16px
@@ -1569,19 +1583,19 @@ padding-bottom: calc(24px + env(safe-area-inset-bottom))
 background: slate-900
 ```
 
-**Score circle:** Giảm từ 80px xuống 72px đường kính. Vẫn căn giữa ở trên cùng. Background vòng tròn là semantic background tint tối.
+**Score circle:** Reduces from 80px to 72px diameter. Remains centered at the top. Circle background uses the semantic background tint.
 
-**Stat row:** Trên mobile, ba thống kê (Đúng / Sai / Bỏ qua) xếp thành hàng ngang bằng nhau. Nếu không đủ chỗ (< 360px), chúng xếp dọc.
+**Stat row:** On mobile, the three stats (Correct / Incorrect / Skipped) stack as a horizontal row with equal columns. If space is insufficient (< 360px wide), they stack vertically instead.
 
-**Progress bar:** Full-width, 8px height (dày hơn dashboard progress bar một chút).
+**Progress bar:** Full-width, 8px height (slightly thicker than dashboard progress bars for visual emphasis in the result context).
 
-**Action buttons:** Xếp dọc — "Xem lại đáp án" ở trên, "Về trang chủ" ở dưới. Mỗi button full-width, 44px height.
+**Action buttons:** Stack vertically — "Review Answers" on top, "Back to Home" below. Each button is full-width, 44px height.
 
 ---
 
 ## 8. Motion & Interaction
 
-Exama cố ý **ít motion**. Bối cảnh thi đòi hỏi sự tập trung, và animation không cần thiết là sự phân tâm.
+Exama is deliberately **low-motion**. The examination context demands focus, and unnecessary animation is a distraction.
 
 ### Permitted Transitions
 
@@ -1601,9 +1615,9 @@ Exama cố ý **ít motion**. Bối cảnh thi đòi hỏi sự tập trung, và
 
 ### Mobile-Specific Motion Notes
 
-Trên mobile, transition phục vụ mục đích khác: chúng truyền đạt quan hệ không gian (drawer trượt từ hướng phù hợp với nguồn gốc của chúng) và xác nhận touch event. Các nguyên tắc vẫn giống nhau — transition nhanh và có chức năng, không trang trí.
+On mobile, transitions serve a different purpose: they communicate spatial relationships (drawers sliding in from directions that match their origin) and confirm touch events. The principles remain the same — transitions are quick and functional, not decorative.
 
-`prefers-reduced-motion: reduce` phải được tôn trọng. Tất cả transition phải được wrap:
+`prefers-reduced-motion: reduce` must be respected. All transitions must be wrapped:
 
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -1616,17 +1630,17 @@ Trên mobile, transition phục vụ mục đích khác: chúng truyền đạt 
 
 ### Prohibited
 
-- Scale transform khi hover hoặc active (desktop hoặc mobile)
-- Slide-in/slide-out transition cho page navigation (dùng instant swap)
-- Scroll-triggered animation
-- Parallax effect
-- Loading skeleton pulse animation
-- Easing curve nảy hoặc đàn hồi
-- Spring physics trong drawer hoặc sheet
+- Scale transforms on hover or active (desktop or mobile)
+- Slide-in/slide-out transitions for page navigation (use instant swap)
+- Scroll-triggered animations
+- Parallax effects
+- Loading skeleton pulse animations
+- Bouncing or elastic easing curves
+- Spring physics in drawers or sheets
 
 ### Loading State
 
-Spinner xoay trên button là animation kéo dài duy nhất trong hệ thống. Tất cả trạng thái loading khác được biểu diễn bằng UI tĩnh: spinner trong button, hoặc text "Đang tải…" trong content area.
+The spinning indicator on buttons is the only persistent animation in the system. All other loading states are represented by static UI: a spinner in the button, or "Loading…" text in the content area.
 
 ---
 
@@ -1634,80 +1648,80 @@ Spinner xoay trên button là animation kéo dài duy nhất trong hệ thống.
 
 ### Color
 
-- Tất cả text đáp ứng WCAG AA (4.5:1) tối thiểu; primary text đáp ứng AAA (7:1).
-- Trạng thái **không bao giờ chỉ truyền đạt bằng màu** — icon, label hoặc pattern đi kèm với tất cả semantic color use.
-- Focus ring dùng `box-shadow: 0 0 0 3px rgba(78,132,180,0.35)` — hiển thị trên cả nền `slate-800` và `slate-900`.
+- All text meets WCAG AA (4.5:1) at minimum; primary text meets AAA (7:1).
+- Status is **never conveyed by color alone** — icons, labels, or patterns accompany all semantic color uses.
+- Focus rings use `box-shadow: 0 0 0 3px rgba(78,132,180,0.35)` — visible against both `slate-800` and `slate-900` backgrounds.
 
 ### Keyboard Navigation
 
-- Tất cả element tương tác có thể đến bằng Tab theo thứ tự DOM logic.
-- Modal trap focus trong khi mở.
-- Question Map bubble có thể điều hướng bằng arrow key (role: `grid`).
-- Nộp bài yêu cầu click button rõ ràng — không có keyboard shortcut kích hoạt nộp bài.
+- All interactive elements are reachable by Tab in logical DOM order.
+- Modals trap focus within themselves when open.
+- The Question Map bubbles are navigable with arrow keys (role: `grid`).
+- Submit Exam requires an explicit button press — no keyboard shortcut triggers submission.
 
 ### Touch & Mobile Accessibility
 
-- Tất cả element tương tác đáp ứng **touch target tối thiểu 44×44px** (Apple HIG / WCAG 2.5.5).
-- Touch target trông nhỏ hơn visual dùng invisible padding extension.
-- Bottom sheet và drawer có thể dismiss bằng vuốt xuống hoặc tap overlay.
-- Question Map drawer trên mobile nhận focus khi mở; focus trả về Map icon khi đóng.
-- Bottom tab bar item có `role="tab"` và `aria-selected` để truyền đạt trạng thái active cho screen reader.
+- All interactive elements meet the **44×44px minimum touch target** (Apple HIG / WCAG 2.5.5).
+- Touch targets that appear visually smaller use invisible padding extensions (see §7.3).
+- Bottom sheets and drawers can be dismissed by swiping down or tapping the overlay.
+- The Question Map drawer on mobile receives focus on open; focus returns to the Map icon on close.
+- Bottom tab bar items have `role="tab"` and `aria-selected` to communicate active state to screen readers.
 
 ### Screen Readers
 
-- Tất cả icon-only button có `aria-label`.
-- Status badge có `role="status"` hoặc được wrap trong `aria-live="polite"` region khi cập nhật động.
-- Timer thông báo thời gian còn lại ở ngưỡng 5 phút và 1 phút qua `aria-live="assertive"`.
-- Form error được liên kết với control qua `aria-describedby`.
-- Question Map drawer có `aria-expanded` trên trigger và `role="dialog"` trên drawer panel.
-- Badge đếm trên Map icon được thông báo qua `aria-label="X câu chưa trả lời"`.
+- All icon-only buttons have `aria-label`.
+- Status badges have `role="status"` or are wrapped in `aria-live="polite"` regions when they update dynamically.
+- The timer announces remaining time at the 5-minute and 1-minute thresholds via `aria-live="assertive"`.
+- Form errors are associated with their control via `aria-describedby`.
+- The Question Map drawer has `aria-expanded` on its trigger and `role="dialog"` on the drawer panel.
+- The unread-count badge on the mobile Map icon is announced via `aria-label="X unanswered questions"`.
 
 ### Focus Management
 
-- Khi modal hoặc bottom sheet mở, focus di chuyển đến element tương tác đầu tiên của panel.
-- Khi modal hoặc bottom sheet đóng, focus trả về element trigger.
-- Khi Question Map drawer mở trên mobile, focus di chuyển đến bubble đầu tiên hoặc nút đóng.
-- Page navigation không scroll về đầu — focus được đặt trên `<h1>` chính của view mới.
+- When a modal or bottom sheet opens, focus moves to the panel's first interactive element.
+- When a modal or bottom sheet closes, focus returns to the trigger element.
+- When the Question Map drawer opens on mobile, focus moves to the first bubble or the close button.
+- Page navigation does not scroll to top — focus is placed on the main `<h1>` of the new view.
 
 ---
 
 ## 10. Writing Style
 
-Copy của Exama **rõ ràng, trực tiếp và tôn trọng**. Người dùng đang chịu áp lực thời gian; mỗi từ phải xứng đáng với vị trí của nó.
+Exama's copy is **clear, direct, and respectful**. Users are under time pressure; every word must earn its place.
 
 ### Voice Attributes
 
-- **Calm** — Không bao giờ báo động, kể cả cho trạng thái lỗi.
-- **Direct** — Câu hành động đứng đầu.
-- **Respectful** — Không coi thường. Đối xử với người dùng như người lớn thông minh.
-- **Specific** — Tránh thông báo mơ hồ như "Đã xảy ra lỗi."
+- **Calm** — Never alarming, even for error states.
+- **Direct** — Action-first sentences.
+- **Respectful** — No condescension. Treat users as intelligent adults.
+- **Specific** — Avoid vague messages like "Something went wrong."
 
 ### Copy Conventions
 
 | Context | Style |
 |---|---|
 | Page titles | Title case, Noto Serif |
-| Button labels | Title case, động từ mệnh lệnh đứng đầu ("Nộp bài", "Thêm câu hỏi") |
-| Status badges | Title case ("Đang diễn ra", "Nháp") |
+| Button labels | Title case, imperative verb-first ("Submit Exam", "Add Question") |
+| Status badges | Title case ("In Progress", "Draft") |
 | Table column headers | Title case |
-| Label/section headers | CHỮ HOA |
-| Alert messages | Sentence case, kết thúc bằng dấu chấm |
-| Error messages | Sentence case, action cụ thể ("Nhập địa chỉ email hợp lệ.") |
-| Empty states | Thân thiện, không có dấu chấm trên heading |
-| Tooltips | Sentence case, không có dấu chấm |
+| Label/section headers | ALL CAPS |
+| Alert messages | Sentence case, end with period |
+| Error messages | Sentence case, specific action ("Enter a valid email address.") |
+| Empty states | Friendly, no period on headings |
+| Tooltips | Sentence case, no period |
 
 ### Numbers
 
-- Điểm số hiển thị với một chữ số thập phân: `8.5`, không phải `8.50` hay `8`.
-- Thời gian hiển thị `MM:SS` trong kỳ thi, `09:38 SA` trong danh sách kết quả.
-- Số lớn dùng dấu cách làm dấu phân cách hàng nghìn: `20 000`, không phải `20,000`.
-- Phân số (câu đã trả lời): `18 / 25`, không phải `18/25` — dấu cách quanh dấu gạch chéo giúp dễ đọc hơn.
+- Scores are displayed with one decimal place: `8.5`, not `8.50` or `8`.
+- Time is displayed as `MM:SS` during exam, `09:38 AM` in result lists.
+- Large numbers use a space as thousands separator: `20 000`, not `20,000` (consistent with Vietnamese convention).
+- Fractions (questions answered): `18 / 25`, not `18/25` — spaces around the slash aid legibility.
 
 ---
 
 ## 11. Token Reference
 
-Token design đầy đủ để implement.
+Complete design token reference for implementation.
 
 ### Breakpoint Tokens
 
