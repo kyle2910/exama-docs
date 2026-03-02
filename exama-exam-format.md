@@ -1,7 +1,5 @@
 # Exama Exam Package Specification
 
-> **Audience:** AI coding agents. This document is the authoritative reference for generating, parsing, and validating Exama exam packages. Follow it exactly. Do not infer structure beyond what is defined here.
-
 ---
 
 ## 1. Package Overview
@@ -81,7 +79,8 @@ description: string                # optional — Markdown, rendered before cont
 content: string                    # optional — Markdown (supports LaTeX via $...$ and $$...$$)
 media: []                          # optional — array of media file paths; see Section 8
 points: number                     # optional — see Section 5 for resolution rules
-config: {}                         # optional — type-specific settings
+config:
+  shuffle_children: boolean        # optional — shuffle order of children before rendering (default: false)
 children: []                       # optional for section and group; forbidden for question
 ```
 
@@ -199,6 +198,8 @@ One correct answer from a list of options.
       value: "Earth"
   solution:
     correct: "A"   # must match an option key exactly
+  config:
+    shuffle_options: false   # optional — shuffle option order before rendering (default: false)
 ```
 
 ---
@@ -222,7 +223,8 @@ One or more correct answers.
   solution:
     correct: ["A", "B"]   # array of option keys
   config:
-    scoring_mode: partial   # "partial" (default) | "all_or_nothing"
+    scoring_mode: partial        # "partial" (default) | "all_or_nothing"
+    shuffle_options: false       # optional — shuffle option order before rendering (default: false)
 ```
 
 ---
@@ -424,26 +426,20 @@ A passage with multiple inline blanks. Structurally identical to `fill_blank_mul
 
 #### `short_answer`
 
-Free-text short response. Primarily manual-graded. AI assistance is advisory only.
+Free-text short response. Manual-graded.
 
 ```yaml
 - type: question
   id: q10
   question_type: short_answer
   content: "Explain Newton's first law in your own words."
-  config:
-    ai_assist: true             # optional — default: false
-    expected_keywords:          # optional — heuristic hints for AI grading, not authoritative
-      - "inertia"
-      - "rest"
-      - "motion"
 ```
 
 ---
 
 #### `essay`
 
-Extended free-text response. Graded manually; AI may suggest a score but does not determine it.
+Extended free-text response. Manual-graded.
 
 ```yaml
 - type: question
@@ -457,7 +453,7 @@ Extended free-text response. Graded manually; AI may suggest a score but does no
       - **Clarity (2 pts):** Logical structure, coherent argument.
 ```
 
-**Note:** `rubric` is a Markdown string. Exama does not parse rubric structure — it is display-only. AI scoring based on the rubric is advisory and non-authoritative.
+**Note:** `rubric` is a Markdown string. Exama does not parse rubric structure — it is display-only.
 
 ---
 
@@ -602,7 +598,75 @@ Grading compares the student's raw string input against `answers[].value` after 
 
 ---
 
-## 9. Validation Rules
+## 9. Shuffle Behavior
+
+Exama hỗ trợ hai cấp độ shuffle độc lập:
+
+### 9.1 `shuffle_children` — Trộn thứ tự câu hỏi
+
+Áp dụng trên `section` hoặc `group`. Khi bật, thứ tự các `children` sẽ được xáo ngẫu nhiên trước khi hiển thị cho học sinh.
+
+```yaml
+- type: section
+  id: part1
+  config:
+    shuffle_children: true   # children rendered in random order
+  children:
+    - <question>
+    - <question>
+    - <question>
+```
+
+**Rules:**
+- `shuffle_children` only shuffles **direct children** — it does not cascade into nested groups.
+- To shuffle at multiple levels, set `shuffle_children: true` on each level independently.
+- Default: `false`.
+
+### 9.2 `shuffle_options` — Trộn thứ tự lựa chọn
+
+Áp dụng trên `single_choice` và `multiple_choice`. Khi bật, thứ tự các `options` sẽ được xáo ngẫu nhiên trước khi hiển thị.
+
+```yaml
+- type: question
+  question_type: single_choice
+  config:
+    shuffle_options: true
+```
+
+**Rules:**
+- `solution.correct` always stores **option keys** (e.g., `"A"`), not positions. Grading is unaffected by shuffle.
+- Default: `false`.
+- Not applicable to `ordering`, `matching`, `cloze`, or blank-based types.
+
+### 9.3 Combined Example
+
+```yaml
+- type: section
+  id: part1
+  title: "Part 1 — Multiple Choice"
+  config:
+    shuffle_children: true       # randomize question order
+  children:
+    - type: question
+      id: q1
+      question_type: single_choice
+      content: "Which gas makes up most of Earth's atmosphere?"
+      options:
+        - key: A
+          value: "Oxygen"
+        - key: B
+          value: "Nitrogen"
+        - key: C
+          value: "Carbon Dioxide"
+      solution:
+        correct: "B"
+      config:
+        shuffle_options: true    # randomize option order
+```
+
+---
+
+## 10. Validation Rules
 
 A valid Exama package must satisfy all of the following:
 
@@ -620,7 +684,7 @@ A valid Exama package must satisfy all of the following:
 
 ---
 
-## 10. Supported Question Types — Reference Table
+## 11. Supported Question Types — Reference Table
 
 | question_type         | Auto-graded | Key fields                               |
 |-----------------------|-------------|------------------------------------------|
@@ -633,20 +697,18 @@ A valid Exama package must satisfy all of the following:
 | `fill_blank_multi`    | ✅          | `blanks.<id>.answers[]`                  |
 | `fill_blank_dropdown` | ✅          | `blanks.<id>.options`, `.correct`        |
 | `cloze`               | ✅          | `blanks.<id>.answers[]`, `config.word_pool` (optional) |
-| `short_answer`        | ❌ manual   | `config.expected_keywords` (optional)    |
+| `short_answer`        | ❌ manual   | `config.rubric` (optional Markdown)      |
 | `essay`               | ❌ manual   | `config.rubric` (optional Markdown)      |
 
 ---
 
-## 11. Versioning
+## 12. Versioning
 
 Both `metadata.yaml` and `content.yaml` include a `version` integer. Increment `version` on any breaking structural change. Non-breaking additions (new optional fields) do not require a version bump.
 
-Current versions: `metadata.yaml` → `1`, `content.yaml` → `3`.
-
 ---
 
-## 12. Reserved for Future Versions
+## 13. Reserved for Future Versions
 
 The following types are not yet implemented and must not be generated:
 
