@@ -26,7 +26,7 @@ exam.zip
 ## 2. metadata.yaml
 
 ```yaml
-version: 1                        # required — integer, increment on breaking change
+version: 3                        # required — integer, increment on breaking change
 exam_id: "math-midterm-2026"      # required — unique string identifier
 title: "Midterm Exam - Grade 11"  # required — display title
 
